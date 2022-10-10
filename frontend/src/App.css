@@ -1,0 +1,287 @@
+:root {
+  --tron-blue: #0ff;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-main {
+  background-color: #161616;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5em;
+  color: white;
+  padding: 0 0 1em 0;
+}
+
+.App-logo, .App-logo-anim {
+  height: 30vmin;
+  pointer-events: none;
+}
+
+.App-logo-anim {
+  animation: App-logo-spin infinite 5s linear;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mine */
+
+.subtitle {
+  font-style: italic;
+}
+
+p.logo_bubble {
+  margin-bottom: 0.5em;
+}
+
+#completed {
+  display: none;
+}
+
+#audio_player {
+  display: none;
+  margin: 0.25em auto 0.5em auto;
+  color: #0ff;
+  border-radius: 50px;
+  border: 4px solid #222;
+  color-scheme: dark;
+  padding: 2px;
+  width: -moz-available;
+}
+
+a, .btn-link {
+  color: var(--tron-blue);
+}
+
+.btn-link {
+  text-decoration: underline;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.small-txt {
+  font-size: 0.7em;
+}
+.smaller-txt {
+  font-size: 0.5em;
+}
+
+.error_txt {
+  font-size: 0.7em;
+  color: #faa;
+}
+
+#status_txt {
+  font-size: 0.8em;
+  margin-bottom: 0.25em;
+}
+
+#status_txt, #submit_container {
+  display: none;
+}
+
+h2.title {
+  margin: 0;
+  color: var(--tron-blue);
+}
+
+form {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+form label {
+  display: block;
+  font-size: 0.9em;
+  margin: 0 0 0.5em 0;
+}
+
+form h4 {
+  font-size: 0.7em;
+  margin: 0 0 0 0;
+  padding: 0.4em 0;
+  color: #fff;
+}
+
+form select {
+  font-size: 0.8em;
+  color: #fff;
+  border-color: transparent;
+}
+
+form select option {
+  background: #111;
+  color: #fff;
+  color-scheme: dark;
+}
+
+form select, form .field_container {
+  border: 0;
+  border-top: 3px solid var(--tron-blue);
+  background: #2a2a2a;
+}
+
+form select, form input[type='file'] {
+  padding: 0.4em 0.3em;
+}
+
+form input[type='file'] {
+  background: transparent;
+  font-size: 0.8em;
+  display: block;
+  margin: 0;
+  color-scheme: dark;
+}
+
+.btn {
+  display: block;
+}
+input[type=submit], .btn {
+  font-size: 1em;
+  background: #2a2a2a;
+  color: var(--tron-blue);
+  border: 4px solid var(--tron-blue);
+  padding: 0.35em 1em;
+  margin: 0.75em auto 0.5em auto;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 50px;
+  width: auto;
+}
+
+input[type=submit]:hover, .btn:hover {
+  background: #3a3a3a;
+}
+
+footer {
+  font-size: 1em;
+  background: #222;
+  color: #aaa;
+  padding: 0.5em;
+}
+footer a {
+  color: #ccc;
+}
+
+.stems {
+  font-size: 0.75em;
+  margin: 0.5em 0 1.5em 0;
+}
+.stem {
+  background: #222;
+  padding: 0.2em 0.3em;
+  margin-bottom: 0.1em;
+  border-radius: 25px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.stem .stem_name {
+  font-size: 0.7em;
+  font-weight: bold;
+  text-transform: capitalize;
+  text-align: left;
+  padding: 0 0.7em 0 0.5em;
+  order: 1;
+}
+.stem .btns {
+  order: 2;
+  display: flex;
+  flex-flow: row nowrap;
+}
+.stem .btn {
+  font-size: 0.6em;
+  font-weight: bold;
+  display: inline-block;
+  border-width: 0.2em;
+  margin: 0;
+}
+.btn.play, .btn.download {
+  border: 2px solid #1a1a1a;
+  background: #2c2c2c;
+  padding: 0.4em 1em;
+}
+.btn.play:hover, .btn.download:hover {
+  background: #333;
+}
+.btn.play {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-right: 0.5em;
+  border-right: 0;
+}
+.btn.download {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-left: 0.5em;
+}
+.play_icon {
+  height: 1.5em;
+  vertical-align: middle;
+}
+
+/* Ads */
+
+.ad-test {
+  background: #0f0;
+  display: none;
+  height: 60px;
+  width: 320px;
+  margin: 1.5em 0 0 0;
+  padding: 0.5em 1em;
+}
+
+/* Mobile */
+
+@media screen and (max-width:720px) {
+  .App-main {
+    font-size: 1.6em;
+  }
+  .stem {
+    font-size: 1.1em;
+  }
+  form select, form input[type='file'] {
+    font-size: 0.5em;
+  }
+  input[type=submit], .btn, footer {
+    font-size: 0.8em;
+  }
+}
+
+/* Animations */
+
+@keyframes dots-1 { from { opacity: 0; } 25% { opacity: 1; } }
+@keyframes dots-2 { from { opacity: 0; } 50% { opacity: 1; } }
+@keyframes dots-3 { from { opacity: 0; } 75% { opacity: 1; } }
+@-webkit-keyframes dots-1 { from { opacity: 0; } 25% { opacity: 1; } }
+@-webkit-keyframes dots-2 { from { opacity: 0; } 50% { opacity: 1; } }
+@-webkit-keyframes dots-3 { from { opacity: 0; } 75% { opacity: 1; } }
+
+.dots span {
+  animation: dots-1 2s infinite steps(1);
+  -webkit-animation: dots-1 2s infinite steps(1);
+}
+.dots span:first-child + span {
+  animation-name: dots-2;
+  -webkit-animation-name: dots-2;
+}
+.dots span:first-child + span + span {
+  animation-name: dots-3;
+  -webkit-animation-name: dots-3;
+}
