@@ -171,6 +171,7 @@ input[type=submit]:hover, .btn:hover {
 footer {
   font-size: 1em;
   background: #222;
+  border-top: 2px solid #333;
   color: #aaa;
   padding: 0.5em;
 }
