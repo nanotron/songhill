@@ -6,4 +6,4 @@ Spleeter-based audio separation and stem creation. Separate vocals, drums, bass,
 * Frontend written in React.
 * Audio processing provided by https://github.com/deezer/spleeter.
 
-![screenshot](https://user-images.githubusercontent.com/270599/194925297-5d9203e5-3a9c-4139-bf48-dde43d40f96a.png)
+<img src="http://millan.info/img/songhill/screenshot.png" width="420" >
