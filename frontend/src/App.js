@@ -1,5 +1,4 @@
 // Dependencies:
-// npm install --save axios
 // npm i
 
 import { useEffect, useState } from 'react'
