@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-p_(4qu4(^)!sloie7((t7u&k0j3t#+c)#gb7fp(_ahsxm$zr+3
 DEBUG = False
 
 #ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'songhill', 'songhill.com']
 
 # Application definition
 
@@ -132,6 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_WHITELIST = [
   'http://localhost',
+  'https://localhost',
   'http://localhost:3000',
   'http://rebo.home:3000',
   'http://192.168.1.204:3000',
