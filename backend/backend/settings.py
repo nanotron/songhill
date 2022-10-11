@@ -135,9 +135,13 @@ CORS_ORIGIN_WHITELIST = [
   'http://rebo.home:3000',
   'http://192.168.1.204:3000',
   'http://songhill.com:3000',
+  'http://songhill.com',
+  'http://www.songhill.com',
+  'https://songhill.com',
+  'https://www.songhill.com',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+#CORS_ORIGIN_ALLOW_ALL = True
 
 #CSRF_COOKIE_SECURE = True
 #CSRF_COOKIE_HTTPONLY = True
