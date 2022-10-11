@@ -131,6 +131,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_WHITELIST = [
+  'http://localhost',
   'http://localhost:3000',
   'http://rebo.home:3000',
   'http://192.168.1.204:3000',
