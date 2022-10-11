@@ -26,8 +26,8 @@ SECRET_KEY = 'django-insecure-p_(4qu4(^)!sloie7((t7u&k0j3t#+c)#gb7fp(_ahsxm$zr+3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
+#ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -120,9 +120,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-#STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Default primary key field type
@@ -134,6 +134,7 @@ CORS_ORIGIN_WHITELIST = [
   'http://localhost:3000',
   'http://rebo.home:3000',
   'http://192.168.1.204:3000',
+  'http://songhill.com:3000',
 ]
 
 # CORS_ORIGIN_ALLOW_ALL = True
