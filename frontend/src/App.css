@@ -251,7 +251,9 @@ footer a {
 
 @media screen and (max-width:720px) {
   .App-main {
+    justify-content: normal;
     font-size: 1.6em;
+    padding: 1em 0;
   }
   .stem {
     font-size: 1.1em;
