@@ -6,7 +6,7 @@ sudo chown -cR www-data:www-data /var/{log,run}/gunicorn/
 """
 
 # Django WSGI application path in pattern MODULE_NAME:VARIABLE_NAME
-wsgi_app = "project.wsgi:application"
+wsgi_app = "backend.wsgi:application"
 # The granularity of Error log outputs
 loglevel = "debug"
 # The number of worker processes for handling requests
