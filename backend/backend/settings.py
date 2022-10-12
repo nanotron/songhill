@@ -30,7 +30,14 @@ SECRET_KEY = 'django-insecure-p_(4qu4(^)!sloie7((t7u&k0j3t#+c)#gb7fp(_ahsxm$zr+3
 DEBUG = False
 
 #ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', '194.195.218.203', 'localhost', 'songhill', 'songhill.com', '.songhill.com']
+ALLOWED_HOSTS = [
+    '0.0.0.0',
+    '127.0.0.1',
+    'localhost',
+    'songhill',
+    'songhill.com',
+    '.songhill.com'
+]
 
 # Application definition
 
