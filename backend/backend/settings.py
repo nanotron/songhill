@@ -29,7 +29,7 @@ except KeyError as e:
 DEBUG = False
 
 #ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'songhill', 'songhill.com']
+ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1', 'localhost', 'songhill', 'songhill.com']
 
 # Application definition
 
@@ -134,6 +134,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
+  'http://0.0.0.0',
   'http://localhost',
   'https://localhost',
   'http://localhost:3000',
