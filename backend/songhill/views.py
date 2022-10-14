@@ -7,8 +7,6 @@ import shutil
 import glob
 import magic
 
-from pathlib import Path
-
 from .utils.janitor import Janitor
 from django.core.files.storage import default_storage
 from django.shortcuts import render
@@ -37,7 +35,7 @@ CONVERT_TO_MP3 = True
 DELETE_OUTPUT_DIR = False
 STEM_EXT = 'mp3'
 STEM_TYPE = 'audio/mpeg'
-PROJECT_PATH = Path(__file__).resolve().parent.parent
+PROJECT_PATH = os.path.abspath(os.path.dirname(__name__))
 
 file_cwd = PROJECT_PATH
 file_in_dir = f'{file_cwd}/audio/in/'
