@@ -31,7 +31,7 @@ function App() {
     PRODMODE = false
   }
 
-  const API_PATH = PRODMODE ? '/api/' : '';
+  const API_PATH = PRODMODE ? '/api' : '';
 
   const byId = (id) => {
     return document.getElementById(id)
