@@ -5,14 +5,15 @@ sudo mkdir -pv /var/{log,run}/gunicorn/
 sudo chown -cR www-data:www-data /var/{log,run}/gunicorn/
 """
 
+pythonpath = "/var/www/songhill/backend"
 # Django WSGI application path in pattern MODULE_NAME:VARIABLE_NAME
 wsgi_app = "backend.wsgi:application"
 # The granularity of Error log outputs
 loglevel = "debug"
 # The number of worker processes for handling requests
-workers = 2
+workers = 4
 # The socket to bind
-bind = "0.0.0.0:8001"
+bind = "0.0.0.0:8000"
 # Restart workers when code changes (development only!)
 reload = True
 # Write access and error info to /var/log
