@@ -13,6 +13,7 @@ from django.shortcuts import render
 from django.middleware import csrf
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse, HttpResponse, Http404
+from django.conf import settings
 
 # Dependencies:
 # apt install ffmpeg libavcodec-extra zip
@@ -35,12 +36,13 @@ CONVERT_TO_MP3 = True
 DELETE_OUTPUT_DIR = False
 STEM_EXT = 'mp3'
 STEM_TYPE = 'audio/mpeg'
-PROJECT_PATH = os.path.abspath(os.path.dirname(__name__))
+PROJECT_PATH = settings.BASE_DIR
 
 file_cwd = PROJECT_PATH
 file_in_dir = f'{file_cwd}/audio/in/'
 file_out_dir = f'{file_cwd}/audio/out/'
 file_in = ''
+
 
 ###########
 # Methods #
