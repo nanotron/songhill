@@ -154,6 +154,7 @@ CORS_ORIGIN_WHITELIST = [
   'https://songhill.com',
   'https://www.songhill.com',
 ]
+CORS_ALLOWED_ORIGINS = CORS_ORIGIN_WHITELIST
 
 #CORS_ORIGIN_ALLOW_ALL = True
 
