@@ -58,7 +58,7 @@ function App() {
   // Only run provisionUser once during load of page.
   // Remove the empty array to apply with every page update.
   useEffect(() => {
-    fetch('http://songhill.com:8000/provision')
+    fetch('/provision')
     .then((response) => response.json())
     .then(data => {
       // eslint-disable-next-line
