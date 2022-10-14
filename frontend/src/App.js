@@ -31,6 +31,8 @@ function App() {
     PRODMODE = false
   }
 
+  const API_PATH = PRODMODE ? '/api/' : '/';
+
   const byId = (id) => {
     return document.getElementById(id)
   }
@@ -58,7 +60,7 @@ function App() {
   // Only run provisionUser once during load of page.
   // Remove the empty array to apply with every page update.
   useEffect(() => {
-    fetch('/provision')
+    fetch(`${API_PATH}/provision`)
     .then((response) => response.json())
     .then(data => {
       // eslint-disable-next-line
@@ -77,7 +79,7 @@ function App() {
   }, [internalError])
 
   const downloadFile = (path, filename) => {
-    fetch(`/${path}?filename=${filename}`)
+    fetch(`${API_PATH}/${path}?filename=${filename}`)
     .then((response) => response.blob())
     .then((data) => {
       var anchor = document.createElement("a")
@@ -114,7 +116,7 @@ function App() {
   }
 
   const stemPlay = (e, filename) => {
-    fetch(`/stem?filename=${filename}`)
+    fetch(`${API_PATH}/stem?filename=${filename}`)
     .then((response) => response.blob())
     .then((data) => {
       const filename_only = filename.split('/')[1].replace(STEM_EXT,'')
@@ -208,7 +210,7 @@ function App() {
     formData.append('file', e.target[1].files[0])
     formData.append('uuid', uuid)
     formData.append('Accept', STEM_TYPE)
-    axios.post('/process/', formData, {
+    axios.post(`${API_PATH}/process/`, formData, {
       headers: {
         'content-type': 'multipart/form-data',
         'X-CSRFToken': csrftoken
@@ -239,7 +241,7 @@ function App() {
   const purgeFiles = (callback) => {
     const formData = new FormData()
     formData.append('dirname', fileData.dirname)
-    axios.post('/purge/', formData, {
+    axios.post(`${API_PATH}/purge/`, formData, {
       headers: { 
         'content-type': 'multipart/form-data',
         'X-CSRFToken': csrftoken 
