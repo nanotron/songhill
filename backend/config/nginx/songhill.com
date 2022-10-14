@@ -1,10 +1,13 @@
+# http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
+
 server {
 	listen 80;
+	client_max_body_size 200M;
 
 	server_name _;
 	server_tokens off;
 
-	location = /favicon.ico { access_log off; log_not_found off; }
+	#location = /favicon.ico { access_log off; log_not_found off; }
 
 	location / {
 		root	/var/www/songhill/frontend/build;
