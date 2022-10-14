@@ -148,6 +148,7 @@ CORS_ORIGIN_WHITELIST = [
   'https://localhost',
   'http://localhost:3000',
   'http://rebo.home:3000',
+  'http://192.168.1.204',
   'http://192.168.1.204:3000',
   'http://songhill.com:3000',
   'http://songhill.com',

@@ -31,7 +31,7 @@ function App() {
     PRODMODE = false
   }
 
-  const API_PATH = PRODMODE ? '/api/' : '/';
+  const API_PATH = PRODMODE ? '/api/' : '';
 
   const byId = (id) => {
     return document.getElementById(id)
@@ -76,7 +76,7 @@ function App() {
       byId('process_form').style.display = 'none'
       setErrorTxt(ErrorCommon)
     }
-  }, [internalError])
+  }, [internalError, API_PATH])
 
   const downloadFile = (path, filename) => {
     fetch(`${API_PATH}/${path}?filename=${filename}`)
