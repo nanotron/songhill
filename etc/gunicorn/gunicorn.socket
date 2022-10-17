@@ -1,1 +1,9 @@
-/etc/systemd/system/gunicorn.socket
+[Unit]
+Description=Gunicorn Socket
+
+[Socket]
+ListenStream=/var/www/songhill/backend/gunicorn.sock
+
+[Install]
+WantedBy=sockets.target
+
