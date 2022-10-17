@@ -5,7 +5,7 @@
 sudo mkdir -pv /var/{log,run}/gunicorn/
 sudo chown -cR www-data:www-data /var/{log,run}/gunicorn/
 
-sudo /var/www/songhill/backend/venv/bin/gunicorn -c /var/www/songhill/backend/config/gunicorn/config.py
+sudo /var/www/songhill/backend/venv/bin/gunicorn -c /var/www/songhill/backend/config/gunicorn/prod.py
 """
 
 pythonpath = "/var/www/songhill/backend"
