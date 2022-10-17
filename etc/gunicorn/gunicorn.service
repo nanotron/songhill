@@ -4,7 +4,7 @@ Requires=gunicorn.socket
 After=network.target
 
 [Service]
-User=root
+User=www-data
 Group=www-data
 WorkingDirectory=/var/www/songhill/backend
 ExecStart=/var/www/songhill/backend/venv/bin/gunicorn \
