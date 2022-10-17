@@ -226,7 +226,7 @@ function App() {
     })
     .catch((error) => {
       console.log(error.toJSON());
-      handlePageError(error)
+      handlePageError(error.message)
     });
   }
 
