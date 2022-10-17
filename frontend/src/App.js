@@ -173,6 +173,7 @@ function App() {
 
   const handlePageError = (error) => {
     window.onbeforeunload = () => {}
+    purgeFiles()
     byId('process_icon').className = 'App-logo'
     if (error) {
       byId('error-txt').style.display = 'block'
