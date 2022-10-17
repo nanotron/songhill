@@ -106,6 +106,14 @@ def return_file(request, contentType = "application/zip"):
 # Endpoints #
 #############
 
+def handle_process_error(file_in, audio_output_dir):
+  myLogger('Processing error')
+  if os.path.exists(audio_output_dir):
+    shutil.rmtree(audio_output_dir)
+  if os.path.exists(file_in):
+    delete_input_file(file_in)
+  LOG.error(str(e))
+
 @require_http_methods(['POST'])
 def process(request):
   if request.method == 'POST':
@@ -129,23 +137,27 @@ def process(request):
       file_valid = is_file_valid(file_in)
       if file_valid:
         # Process audio and save stems.
-        myLogger('Spleeting begins')
-        separator = Separator(f'spleeter:{stem_type}stems')
-        separator.separate_to_file(file_in, file_out_dir)
-        myLogger('Spleeting complete')
+        try:
+          myLogger('Spleeting begins')
+          separator = Separator(f'spleeter:{stem_type}stems')
+          separator.separate_to_file(file_in, file_out_dir)
+          myLogger('Spleeting complete')
 
-        # Convert wav files to mp3.
-        if CONVERT_TO_MP3 and os.path.exists(audio_output_dir):
-          if os.path.exists(audio_output_dir):
-            wav_files = glob.glob(f'{audio_output_dir}/*.wav')
-            for wav_file in wav_files:
-              stem_file = f"{wav_file.replace('.wav','')}.{STEM_EXT}"
-              AudioSegment.from_wav(wav_file).export(stem_file, format=STEM_EXT)
-              if os.path.exists(stem_file):
-                os.remove(wav_file)
-            output_stems = os.listdir(audio_output_dir)
+          # Convert wav files to mp3.
+          if CONVERT_TO_MP3 and os.path.exists(audio_output_dir):
+            if os.path.exists(audio_output_dir):
+              wav_files = glob.glob(f'{audio_output_dir}/*.wav')
+              for wav_file in wav_files:
+                stem_file = f"{wav_file.replace('.wav','')}.{STEM_EXT}"
+                AudioSegment.from_wav(wav_file).export(stem_file, format=STEM_EXT)
+                if os.path.exists(stem_file):
+                  os.remove(wav_file)
+              output_stems = os.listdir(audio_output_dir)
 
-        status_text = 'complete'
+            status_text = 'complete'
+        except Exception as e:
+          handle_process_error(file_in, audio_output_dir)
+          return JsonResponse({'error': str(e)})
       else:
         status_text = 'failed'
 
@@ -164,12 +176,7 @@ def process(request):
 
       return JsonResponse(response)
     except Exception as e:
-      myLogger('Processing error')
-      if os.path.exists(audio_output_dir):
-        shutil.rmtree(audio_output_dir)
-      if os.path.exists(file_in):
-        delete_input_file(file_in)
-      LOG.error(str(e))
+      handle_process_error(file_in, audio_output_dir)
       return JsonResponse({'error': str(e)})
 
 # Provision the session.
