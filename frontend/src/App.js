@@ -180,7 +180,7 @@ function App() {
       const email_link = `${mailto}?subject=${error}`
       setErrorTxt(<div>
         <div>An error has occurred.</div>
-        <div>Please reload or <a href={email_link}>contact us</a>.</div>
+        <div>Please <button className="btn-link" onClick={() => window.location.reload()}>reload</button> or <a href={email_link}>contact us</a>.</div>
       </div>)
       setStatusTxt(<div className='smaller-txt error-box'>${error}</div>)
     }
