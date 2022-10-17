@@ -173,12 +173,13 @@ function App() {
 
   const handlePageError = (error) => {
     window.onbeforeunload = () => {}
+    byId('process_icon').className = 'App-logo'
     if (error) {
       byId('error_txt').style.display = 'block'
       setErrorTxt(<div>An error has occurred. (×_×)</div>)
       setStatusTxt(<div className='smaller-txt'>${error}</div>)
     }
-    setCompletedMarkup(<div><button className="btn-link" onClick={() => pageReset()}>Try again</button></div>)
+    setErrorTxt(<div><button className="btn-link" onClick={() => pageReset()}>Try again</button></div>)
   }
 
   const pageProcessComplete = (response) => {
