@@ -18,7 +18,10 @@ server {
 	location /api/ {
 		include		proxy_params;
 		rewrite		/api/([^/]+) /$1/ break;
-		proxy_pass	http://localhost:8001;
+		# Connect to gunicorn.sock setup for systemd.
+		proxy_pass	http://unix:/var/www/songhill/backend/gunicorn.sock;
+		# Use the following to pass to manually run gunicron using the config scripts/
+		#proxy_pass	http://localhost:8001;
 	}
 
 }
