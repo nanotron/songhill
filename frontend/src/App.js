@@ -176,10 +176,10 @@ function App() {
     byId('process_icon').className = 'App-logo'
     if (error) {
       byId('error_txt').style.display = 'block'
-      setErrorTxt(<div>An error has occurred. (×_×)</div>)
+      const email_link = `${mailto}?subject=${error}`
+      setErrorTxt(<div>An error has occurred. (×_×) Please reload, <button className="btn-link" onClick={() => pageResetConfirmed()}>try again</button>, or <a href={email_link}>contact us</a></div>)
       setStatusTxt(<div className='smaller-txt'>${error}</div>)
     }
-    setErrorTxt(<div><button className="btn-link" onClick={() => pageReset()}>Try again</button></div>)
   }
 
   const pageProcessComplete = (response) => {
