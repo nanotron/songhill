@@ -100,7 +100,7 @@ function App() {
     // Check file size.
     const is_size_valid = audio_file.size <= MAX_FILESIZE
     if (!is_audio_file || !is_size_valid) {
-      byId('error_txt').style.display = 'block'
+      byId('error-txt').style.display = 'block'
       byId('submit_container').style.display = 'none'
     }
     if (!is_audio_file) {
@@ -110,7 +110,7 @@ function App() {
       setErrorTxt(`Maximum file size is ${MAX_FILESIZE_MB} megabytes.`)
     }
     if (e.target.value && is_audio_file) {
-      byId('error_txt').style.display = 'none'
+      byId('error-txt').style.display = 'none'
       byId('submit_container').style.display = 'block'
     }
   }
@@ -161,7 +161,7 @@ function App() {
         window.onbeforeunload = () => {}
         clearInterval(timer)
         purgeFiles()
-        byId('error_txt').style.display = 'block'
+        byId('error-txt').style.display = 'block'
         byId('status_txt').style.display = 'none'
         byId('completed').style.display = 'none'
         setErrorTxt(<div>Your session has expired. Please reload or <button className="btn-link" onClick={() => pageResetConfirmed()}>start over</button>.</div>)
@@ -175,13 +175,13 @@ function App() {
     window.onbeforeunload = () => {}
     byId('process_icon').className = 'App-logo'
     if (error) {
-      byId('error_txt').style.display = 'block'
+      byId('error-txt').style.display = 'block'
       const email_link = `${mailto}?subject=${error}`
       setErrorTxt(<div>
         <div>An error has occurred.</div>
         <div>Please reload, <button className="btn-link" onClick={() => pageResetConfirmed()}>try again</button>, or <a href={email_link}>contact us</a>.</div>
       </div>)
-      setStatusTxt(<div className='smaller-txt'>${error}</div>)
+      setStatusTxt(<div className='smaller-txt error-box'>${error}</div>)
     }
   }
 
@@ -291,7 +291,7 @@ function App() {
             <input type="submit" id="process_button" value="Process Audio" title="Process Audio" />
           </div>
         </form>
-        <div id="error_txt" className="error_txt">{errorTxt}</div>
+        <div id="error-txt" className="error-txt">{errorTxt}</div>
         <div id="status_txt">{statusTxt}</div>     
         <div id="completed">
           <AudioPlayer />

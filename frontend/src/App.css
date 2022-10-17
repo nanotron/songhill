@@ -81,9 +81,16 @@ a, .btn-link {
   font-size: 0.5em;
 }
 
-.error_txt {
+.error-txt {
   font-size: 0.7em;
   color: #faa;
+}
+
+.error-box {
+  padding: 0.5em;
+  background: #211;
+  margin: 0.5em;
+  color: #f00;
 }
 
 #status_txt {
