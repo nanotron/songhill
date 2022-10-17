@@ -1,6 +1,7 @@
 """Gunicorn config file"""
 
 """
+# Note: gunicorn may not run after reboot if these do not exist.
 sudo mkdir -pv /var/{log,run}/gunicorn/
 sudo chown -cR www-data:www-data /var/{log,run}/gunicorn/
 
