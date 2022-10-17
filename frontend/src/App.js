@@ -177,7 +177,10 @@ function App() {
     if (error) {
       byId('error_txt').style.display = 'block'
       const email_link = `${mailto}?subject=${error}`
-      setErrorTxt(<div>An error has occurred. (×_×) Please reload, <button className="btn-link" onClick={() => pageResetConfirmed()}>try again</button>, or <a href={email_link}>contact us</a></div>)
+      setErrorTxt(<div>
+        <div>An error has occurred.</div>
+        <div>Please reload, <button className="btn-link" onClick={() => pageResetConfirmed()}>try again</button>, or <a href={email_link}>contact us</a>.</div>
+      </div>)
       setStatusTxt(<div className='smaller-txt'>${error}</div>)
     }
   }
