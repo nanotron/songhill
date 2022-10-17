@@ -171,6 +171,16 @@ function App() {
     }, 1000)
   }
 
+  const handlePageError = (error) => {
+    window.onbeforeunload = () => {}
+    if (error) {
+      byId('error_txt').style.display = 'block'
+      setErrorTxt(<div>An error has occurred. (×_×)</div>)
+      setStatusTxt(<div className='smaller-txt'>${error}</div>)
+    }
+    setCompletedMarkup(<div><button className="btn-link" onClick={() => pageReset()}>Try again</button></div>)
+  }
+
   const pageProcessComplete = (response) => {
     byId('completed').style.display = 'block'  
     byId('process_icon').className = 'App-logo'    
@@ -183,13 +193,7 @@ function App() {
         <div className="small-txt"><button className="btn-link" onClick={() => pageReset()}>Process new audio</button></div>
       </div>)
     } else {
-      window.onbeforeunload = () => {}
-      if (response.data.error) {
-        byId('error_txt').style.display = 'block'
-        setErrorTxt(<div>An error has occurred. (×_×)</div>)
-        setStatusTxt(<div className='smaller-txt'>${response.data.error}</div>)
-      }
-      setCompletedMarkup(<div><button className="btn-link" onClick={() => pageReset()}>Try again</button></div>)
+      handlePageError(response.data.error)
     }
   }
 
@@ -220,6 +224,10 @@ function App() {
       fileData = response.data
       pageProcessComplete(response)
     })
+    .catch((error) => {
+      console.log(error.toJSON());
+      handlePageError(error)
+    });
   }
 
   const pageResetConfirmed = () => {
