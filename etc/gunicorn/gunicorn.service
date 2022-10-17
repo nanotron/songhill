@@ -1,18 +1,1 @@
-[Unit]
-Description=Gunicorn Daemon
-Requires=gunicorn.socket
-After=network.target
-
-[Service]
-User=root
-Group=www-data
-WorkingDirectory=/var/www/songhill/backend
-ExecStart=/var/www/songhill/backend/venv/bin/gunicorn \
-	--access-logfile - \
-	--workers 3 \
-	--bind unix:/var/www/songhill/backend/gunicorn.sock \
-	backend.wsgi:application
-
-[Install]
-WantedBy=multi-user.target
-
+/etc/systemd/system/gunicorn.service
