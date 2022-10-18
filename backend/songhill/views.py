@@ -209,15 +209,17 @@ def zip(request):
 @require_http_methods(['POST'])
 def purge(request):
   if request.method == 'POST':
-    dir_fullpath = f'{file_out_dir}{request.POST.get("dirname")}'
-    zip_fullpath = f'{dir_fullpath}.zip'
-    
-    if os.path.exists(dir_fullpath):
-      shutil.rmtree(dir_fullpath)
-    if os.path.exists(zip_fullpath):
-      os.remove(zip_fullpath)
     if os.path.exists(file_in):
       os.remove(file_in)
+
+    if request.POST.get("dirname"):
+      dir_fullpath = f'{file_out_dir}{request.POST.get("dirname")}'
+      zip_fullpath = f'{dir_fullpath}.zip'
+
+      if os.path.exists(dir_fullpath):
+        shutil.rmtree(dir_fullpath)
+      if os.path.exists(zip_fullpath):
+        os.remove(zip_fullpath)
 
     response = HttpResponse(headers={'status': 'cleaned'})
     return response

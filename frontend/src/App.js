@@ -257,7 +257,7 @@ function App() {
     axios.post(`${API_PATH}/purge/`, formData, {
       headers: { 
         'content-type': 'multipart/form-data',
-        'X-CSRFToken': csrftoken 
+        'X-CSRFToken': csrftoken
       }
     })
     .then((response) => {
