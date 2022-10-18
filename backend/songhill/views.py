@@ -210,8 +210,8 @@ def zip(request):
 @require_http_methods(['POST'])
 def purge(request):
   if request.method == 'POST':
-    print('uuid')
-    print(request.POST.get("uuid"))
+    myLogger('uuid')
+    myLogger(request.POST.get("uuid"))
     if request.POST.get("dirname"):
       dir_fullpath = f'{file_out_dir}{request.POST.get("dirname")}'
       zip_fullpath = f'{dir_fullpath}.zip'
