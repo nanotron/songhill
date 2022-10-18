@@ -254,8 +254,9 @@ function App() {
   const purgeFiles = (callback) => {
     const formData = new FormData()
     formData.append('dirname', fileData.dirname)
+    formData.append('uuid', uuid)
     axios.post(`${API_PATH}/purge/`, formData, {
-      headers: { 
+      headers: {
         'content-type': 'multipart/form-data',
         'X-CSRFToken': csrftoken
       }

@@ -206,12 +206,12 @@ def zip(request):
   return return_file(zip_filename, "application/zip")
 
 # Remove any session files.
+# TODO: Attempt to purge when only a uuid is passed in.
 @require_http_methods(['POST'])
 def purge(request):
   if request.method == 'POST':
-    if os.path.exists(file_in):
-      os.remove(file_in)
-
+    print('uuid')
+    print(request.POST.get("uuid"))
     if request.POST.get("dirname"):
       dir_fullpath = f'{file_out_dir}{request.POST.get("dirname")}'
       zip_fullpath = f'{dir_fullpath}.zip'
@@ -220,6 +220,8 @@ def purge(request):
         shutil.rmtree(dir_fullpath)
       if os.path.exists(zip_fullpath):
         os.remove(zip_fullpath)
+      if os.path.exists(file_in):
+        os.remove(file_in)
 
-    response = HttpResponse(headers={'status': 'cleaned'})
-    return response
+      response = HttpResponse(headers={'status': 'cleaned'})
+      return response
