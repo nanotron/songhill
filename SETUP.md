@@ -75,6 +75,7 @@ pip install django zipp django-admin backend djangorestframework django-cors-hea
 python manage.py migrate
 python manage.py collectstatic
 
+NOTE: `songhill/backend/.env` file will need to be added manually with the appropriate `SECRET_KEY=` value.
 
 # Nginx
 
@@ -98,12 +99,22 @@ or
 sudo systemctl daemon-reload
 sudo systemctl restart gunicorn
 
-Good reference: https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-20-04
+Reference: https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-20-04
 
 
-# Restart all services
+# Deploy: Update and restart all services
+
+songhill/bin/songhill_deploy.sh
+
+
+# Restart nginx and gunicorn only
 
 songhill/bin/songhill_restart_all.sh
+
+
+# Backup existing nginx and gunicorn etc configs
+
+songhill/bin/songhill_backup_configs.sh
 
 
 # Tips
