@@ -1,6 +1,3 @@
-// Dependencies:
-// npm i
-
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import logo from './songhill-logo.png'

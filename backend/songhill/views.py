@@ -15,16 +15,6 @@ from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse, HttpResponse, Http404
 from django.conf import settings
 
-# Dependencies:
-# apt install ffmpeg libavcodec-extra zip
-#
-# cd songhill/backend
-# - virtualenv venv -p python3
-# source venv/bin/activate
-#
-# pip install django zipp django-admin backend djangorestframework django-cors-headers pydub spleeter python-magic gunicorn
-# or to reinstall: pip install -I <above packages>
-
 from spleeter.separator import Separator
 from pydub import AudioSegment
 
