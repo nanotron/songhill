@@ -2,5 +2,5 @@
 
 sudo systemctl daemon-reload
 sudo systemctl restart gunicorn
-sudo systemctl start nginx
+sudo systemctl restart nginx
 
