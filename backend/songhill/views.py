@@ -209,22 +209,18 @@ def zip(request):
   return return_file(zip_filename, "application/zip")
 
 # Remove any session files.
-# TODO: Attempt to purge when only a uuid is passed in.
 @require_http_methods(['POST'])
 def purge(request):
   if request.method == 'POST':
-    myLogger('uuid')
-    myLogger(request.POST.get("uuid"))
-    if request.POST.get("dirname"):
-      dir_fullpath = f'{file_out_dir}{request.POST.get("dirname")}'
-      zip_fullpath = f'{dir_fullpath}.zip'
+    try:
+      files = glob.glob(f'{file_cwd}/audio/*/{request.POST.get("uuid")}*')
+      for file in files:
+        if os.path.isfile(file):
+          os.remove(file)
+        elif os.path.isdir(file):
+          shutil.rmtree(file)
 
-      if os.path.exists(dir_fullpath):
-        shutil.rmtree(dir_fullpath)
-      if os.path.exists(zip_fullpath):
-        os.remove(zip_fullpath)
-      if os.path.exists(file_in):
-        os.remove(file_in)
-
-      response = HttpResponse(headers={'status': 'cleaned'})
-      return response
+      return HttpResponse(headers={'status': 'cleaned'})
+    except Exception as e:
+      myLogger(f'Purge error: {e}')
+      return HttpResponse(headers={'status': 'error'})
