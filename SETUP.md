@@ -80,11 +80,25 @@ python manage.py collectstatic
 
 NOTE: `songhill/backend/.env` file will need to be added manually with the appropriate `SECRET_KEY=` value.
 
+
 # Nginx
 
 sudo cp /var/www/songhill/etc/nginx/nginx.conf /etc/nginx/sites-available/
 sudo systemctl start nginx
 sudo systemctl enable nginx
+
+
+# Nginx - SSL Certificate
+
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx -d songhill.com -d www.songhill.com
+
+> Check status of certbot renewal:
+sudo systemctl status certbot.timer
+
+> To test dry-run of renewal process:
+sudo certbot renew --dry-run
+
 
 # Gunicorn
 
@@ -101,8 +115,6 @@ or
 
 sudo systemctl daemon-reload
 sudo systemctl restart gunicorn
-
-Reference: https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-20-04
 
 
 # Deploy: Update and restart all services
@@ -139,4 +151,10 @@ deactivate
 rm -rf songhill/backend/venv
 rm -rf ~/.cache/pip
 < reinstall django pip packages>
+
+
+# References
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-20-04
+https://realpython.com/django-nginx-gunicorn/
 
