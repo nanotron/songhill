@@ -40,12 +40,15 @@ WWW Secure (v6)            ALLOW       Anywhere (v6)
 Nginx Full (v6)            ALLOW       Anywhere (v6)
 ```
 
-# User
+# Users
 
 sudo adduser www-data
 sudo usermod -aG sudo www-data
 sudo chown -R www-data:www-data /var/www/
 sudo chmod -R 775 /var/www/
+
+sudo usermod -aG sudo emillan
+sudo usermod -aG www-data emillan
 
 
 # Code
@@ -116,6 +119,13 @@ songhill/bin/songhill_restart_all.sh
 
 songhill/bin/songhill_backup_configs.sh
 
+
+# Crontab - Every 8 hours.
+> Deletes any files older than 30 minutes.
+
+```
+0 */8 * * * /usr/bin/python3 $HOME/songhill/backend/songhill/scripts/run_janitor.py
+```
 
 # Tips
 
