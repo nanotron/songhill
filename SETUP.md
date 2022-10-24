@@ -103,7 +103,7 @@ Good reference: https://www.digitalocean.com/community/tutorials/how-to-set-up-d
 
 # Restart all services
 
-songhill/bin/restart_all.sh
+songhill/bin/songhill_restart_all.sh
 
 
 # Tips
