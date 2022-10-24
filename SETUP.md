@@ -69,7 +69,7 @@ cd songhill/backend
 virtualenv venv -p python3
 source venv/bin/activate
 
-pip install django zipp django-admin backend djangorestframework django-cors-headers pydub spleeter python-magic gunicorn
+pip install django zipp django-admin backend djangorestframework django-cors-headers pydub spleeter python-magic gunicorn python-decouple
   - or, to reinstall: pip install -I <above packages>
 
 python manage.py migrate
