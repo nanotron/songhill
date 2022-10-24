@@ -108,6 +108,10 @@ songhill/bin/songhill_restart_all.sh
 
 # Tips
 
+> Tail gunicorn logs:
+
+tail -f /var/log/gunicorn/socket.log
+
 > In case of django package problems:
 
 deactivate
