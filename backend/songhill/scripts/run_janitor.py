@@ -1,6 +1,6 @@
 #!/usr/bin/python
-# Weekly cron on Saturday morning at 6am.
-# 0 6 * * 6 /usr/bin/python3 $HOME/songhill/backend/songhill/scripts/run_janitor.py
+# cron every 8 hours.
+# 0 */8 * * * /usr/bin/python3 $HOME/songhill/backend/songhill/scripts/run_janitor.py
 
 import os
 import sys
