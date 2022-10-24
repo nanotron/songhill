@@ -1,24 +1,32 @@
 #!/bin/bash
 
+function output() {
+  printf "\n============================================================"
+  printf "\nSONGHILL: $1"
+  printf "\n============================================================\n"
+}
+
+echo ChunkyM1tch0sh! | sudo echo "Starting deploy..."
+
 export SONGHILL_ROOT=/var/www/songhill
 cd $SONGHILL_ROOT
 
-echo "SONGHILL: Updating code..."
+output "Updating code"
 git pull
 
-echo "SONGHILL: React - npm run build..."
+output "React - npm run build"
 cd $SONGHILL_ROOT/frontend
 npm run build
 
-echo "SONGHILL: Django manage.py updates..."
+output "Django manage.py updates"
 cd $SONGHILL_ROOT/backend
-venv/bin/activate
-python manage.py migrate
-python manage.py collectstatic
+source venv/bin/activate
+python manage.py migrate --no-input
+python manage.py collectstatic --no-input
 
-echo "SONGHILL: Restarting services..."
+output "Restarting services"
 $SONGHILL_ROOT/bin/songhill_restart_services.sh
 
 cd -
-echo "SONGILL: Deploy complete."
+output "Deploy complete"
 
