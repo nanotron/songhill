@@ -273,7 +273,7 @@ function App() {
         <p className="logo_bubble"><img alt="songhill" id="process_icon" className="App-logo" src={logo} /></p>
         <form onSubmit={(e) => processFile(e)} id="process_form">
           <label>
-            <h4>Choose a Stem Type</h4>
+            <h4>Choose a Separation Type</h4>
             <select name="stems" defaultValue="4">
               <option value="2">2 Stems: Vocals and Accompaniment</option>
               <option value="4">4 Stems: Vocals, Drums, Bass, Other</option>
