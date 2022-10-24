@@ -6,7 +6,7 @@ function output() {
   printf "\n============================================================\n"
 }
 
-echo ChunkyM1tch0sh! | sudo echo "Starting deploy..."
+sudo printf "\nStarting deploy: set sudo...\n"
 
 export SONGHILL_ROOT=/var/www/songhill
 cd $SONGHILL_ROOT
