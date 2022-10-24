@@ -17,7 +17,10 @@ from django.conf import settings
 
 # Dependencies:
 # apt install ffmpeg libavcodec-extra zip
+# cd songhill/backend
+# source venv/bin/activate
 # pip install pydub spleeter python-magic
+# or to reinstall: pip -I install pydub spleeter python-magic
 
 from spleeter.separator import Separator
 from pydub import AudioSegment
