@@ -52,7 +52,7 @@ p.logo_bubble {
 
 #audio_player {
   display: none;
-  margin: 0.25em auto 0.5em auto;
+  margin: 0.25em auto 0.25em;
   color: #0ff;
   border-radius: 50px;
   border: 4px solid #222;
@@ -158,13 +158,14 @@ form input[type='file'] {
 .btn {
   display: block;
 }
+
 input[type=submit], .btn {
   font-size: 1em;
   background: #2a2a2a;
   color: var(--tron-blue);
   border: 4px solid var(--tron-blue);
   padding: 0.35em 1em;
-  margin: 0.75em auto 0.5em auto;
+  margin: 1em auto 0.5em;
   cursor: pointer;
   text-decoration: none;
   border-radius: 50px;
@@ -187,7 +188,7 @@ footer a {
 
 .stems {
   font-size: 0.75em;
-  margin: 0.5em 0 1.5em 0;
+  margin: .5em 0 0 0;
 }
 .stem {
   background: #222;
