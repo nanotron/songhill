@@ -1,22 +1,23 @@
-import logging
+import glob
 import json
+import logging
 import os
 import re
-import uuid
 import shutil
-import glob
+import time
+import uuid
+
 import magic
+from django.conf import settings
+from django.core.files.storage import default_storage
+from django.http import Http404, HttpResponse, JsonResponse
+from django.middleware import csrf
+from django.shortcuts import render
+from django.views.decorators.http import require_http_methods
+from pydub import AudioSegment
+from spleeter.separator import Separator
 
 from .utils.janitor import Janitor
-from django.core.files.storage import default_storage
-from django.shortcuts import render
-from django.middleware import csrf
-from django.views.decorators.http import require_http_methods
-from django.http import JsonResponse, HttpResponse, Http404
-from django.conf import settings
-
-from spleeter.separator import Separator
-from pydub import AudioSegment
 
 ########
 # Vars #
@@ -38,7 +39,6 @@ file_cwd = PROJECT_PATH
 file_in_dir = f'{file_cwd}/audio/in/'
 file_out_dir = f'{file_cwd}/audio/out/'
 file_in = ''
-
 
 ###########
 # Methods #
@@ -80,7 +80,7 @@ def delete_output_dir(audio_output_dir):
   # Remove output dir if zip file exists.
   myLogger('Deleting output directory')
   zip_file = f'{audio_output_dir}.zip'
-  if os.path.exists(zip_file):
+  if os.path.exists(zip_file) and os.path.exists(audio_output_dir):
     shutil.rmtree(audio_output_dir)
 
 def return_file(request, contentType = "application/zip"):
@@ -137,11 +137,13 @@ def process(request):
             for wav_file in wav_files:
               if os.path.exists(wav_file):
                 stem_file = f"{wav_file.replace('.wav','')}.{STEM_EXT}"
-                AudioSegment.from_wav(wav_file).export(stem_file, format=STEM_EXT)
+                audioSegment = AudioSegment.from_wav(wav_file).export(stem_file, format=STEM_EXT)
                 if os.path.exists(stem_file):
                   os.remove(wav_file)
             output_stems = os.listdir(audio_output_dir)
 
+        del separator
+        del audioSegment
         status_text = 'complete'
       else:
         status_text = 'failed'
@@ -162,18 +164,20 @@ def process(request):
       return JsonResponse(response)
     except Exception as e:
       myLogger('Processing error')
-      if os.path.exists(audio_output_dir):
-        shutil.rmtree(audio_output_dir)
+      del separator
+      del audioSegment
       if os.path.exists(file_in):
         delete_input_file(file_in)
+      if os.path.exists(audio_output_dir):
+        shutil.rmtree(audio_output_dir)
       LOG.error(str(e))
       return JsonResponse({'error': str(e)})
 
 # Provision the session.
 @require_http_methods(['GET'])
 def provision(request):
-  myJanitor = Janitor(f'{file_cwd}/audio', MAX_FILE_AGE)
-  myJanitor.clean_old_files()
+  janitor = Janitor(f'{file_cwd}/audio', MAX_FILE_AGE)
+  janitor.clean_old_files()
   json = {
     "csrftoken": csrf.get_token(request),
     # Generate simple 8 character uuid.
@@ -195,10 +199,10 @@ def zip(request):
   filename = request.GET.get('filename')
   audio_output_dir = f'{file_out_dir}{filename}'
   zip_filename = f'{filename}.zip'
-  zip_file = f'{audio_output_dir}.zip'
-  if not os.path.exists(zip_file):
-    zip_file = shutil.make_archive(audio_output_dir, 'zip', audio_output_dir)        
-    zip_filename = zip_file.split('/').pop()
+  zip_fullpath = f'{audio_output_dir}.zip'
+  if not os.path.exists(zip_fullpath):
+    zip_fullpath = shutil.make_archive(audio_output_dir, 'zip', audio_output_dir)
+    zip_filename = zip_fullpath.split('/').pop()
 
   return return_file(zip_filename, "application/zip")
 
@@ -209,9 +213,9 @@ def purge(request):
     try:
       files = glob.glob(f'{file_cwd}/audio/*/{request.POST.get("uuid")}*')
       for file in files:
-        if os.path.isfile(file):
+        if os.path.exists(file) and os.path.isfile(file):
           os.remove(file)
-        elif os.path.isdir(file):
+        elif os.path.exists(file) and os.path.isdir(file):
           shutil.rmtree(file)
 
       return HttpResponse(headers={'status': 'cleaned'})

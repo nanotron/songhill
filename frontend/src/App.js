@@ -22,6 +22,8 @@ function App() {
   const [ csrftoken, setCsrftoken ] = useState()
   const [ errorTxt, setErrorTxt ] = useState()
   const [ completedMarkup, setCompletedMarkup ] = useState('')
+  const [ statusTxt, setStatusTxt ] = useState()
+  const [ submitBtnDisabled, setSubmitBtnDisabled ] = useState(false)
 
   let PRODMODE = true
   if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
@@ -39,8 +41,6 @@ function App() {
       <span>.</span><span>.</span><span>.</span>
     </span>)
   }
-  const initialStatusTxt = <div>Processing.<Dots /></div>
-  const [ statusTxt, setStatusTxt ] = useState(initialStatusTxt)
 
   const ErrorCommon = () => {
     return <div>
@@ -89,6 +89,11 @@ function App() {
     })
   }
 
+  const showFileSelectError = () => {
+    byId('error-txt').style.display = 'block'
+    setErrorTxt(<div>Please select an audio file. <div className='small-txt'>e.g., mp3, wav, ogg, flac, etc.</div></div>)
+  }
+
   const handleFileAdd = (e) => {
     const audio_file = e.target.files[0]
     // Supported content types.
@@ -98,17 +103,19 @@ function App() {
     const is_size_valid = audio_file.size <= MAX_FILESIZE
     if (!is_audio_file || !is_size_valid) {
       byId('error-txt').style.display = 'block'
-      byId('submit_container').style.display = 'none'
+      byId('process_button').className = 'btn-disabled'
+      setSubmitBtnDisabled(true)
     }
     if (!is_audio_file) {
-      setErrorTxt(<div>Please select an audio file. <div className='small-txt'>e.g., mp3, wav, ogg, flac, etc.</div></div>)
+      showFileSelectError()
     }
     if (!is_size_valid) {
       setErrorTxt(`Maximum file size is ${MAX_FILESIZE_MB} megabytes.`)
     }
     if (e.target.value && is_audio_file) {
       byId('error-txt').style.display = 'none'
-      byId('submit_container').style.display = 'block'
+      byId('process_button').className = ''
+      setSubmitBtnDisabled(false)
     }
   }
 
@@ -202,35 +209,45 @@ function App() {
 
   const pageInProgress = () => {
     window.onbeforeunload = (e) => { return leaveConfirmTxt }
-    byId('process_icon').className = 'App-logo-anim'
+    setStatusTxt(<div>
+      <div>Processing your tracks.<Dots /></div>
+      <div className="small-txt"><button className="btn-link" onClick={() => pageReset()}>Cancel processing</button></div>
+    </div>)
     byId('status_txt').style.display = 'block'
+    byId('process_icon').className = 'App-logo-anim'
     byId('process_form').style.display = 'none'
   }
 
   const processFile = async (e) => {
     e.preventDefault()
-    pageInProgress()
+    if (e.target[0].value && e.target[1].files[0]) {
+      pageInProgress()
+      setSubmitBtnDisabled(false)
 
-    // Upload file.
-    const formData  = new FormData()
-    formData.append('type', e.target[0].value)
-    formData.append('file', e.target[1].files[0])
-    formData.append('uuid', uuid)
-    formData.append('Accept', STEM_TYPE)
-    axios.post(`${API_PATH}/process/`, formData, {
-      headers: {
-        'content-type': 'multipart/form-data',
-        'X-CSRFToken': csrftoken
-      }
-    })
-    .then((response) => {
-      fileData = response.data
-      pageProcessComplete(response)
-    })
-    .catch((error) => {
-      console.log(error.toJSON())
-      handlePageError(error.message)
-    })
+      const formData  = new FormData()
+      formData.append('type', e.target[0].value)
+      formData.append('file', e.target[1].files[0])
+      formData.append('uuid', uuid)
+      formData.append('Accept', STEM_TYPE)
+
+      // Upload file.
+      axios.post(`${API_PATH}/process/`, formData, {
+        headers: {
+          'content-type': 'multipart/form-data',
+          'X-CSRFToken': csrftoken
+        }
+      })
+      .then((response) => {
+        fileData = response.data
+        pageProcessComplete(response)
+      })
+      .catch((error) => {
+        console.log(error.toJSON())
+        handlePageError(error.message)
+      })
+    } else {
+      showFileSelectError()
+    }
   }
 
   const pageResetConfirmed = () => {
@@ -288,11 +305,11 @@ function App() {
             </div>
           </label>
           <div id="submit_container">
-            <input type="submit" id="process_button" value="Process Audio" title="Process Audio" />
+            <input type="submit" id="process_button" disabled={submitBtnDisabled} className="btn-disabled" value="Process Audio" title="Process Audio" />
           </div>
         </form>
         <div id="error-txt" className="error-txt">{errorTxt}</div>
-        <div id="status_txt">{statusTxt}</div>     
+        <div id="status_txt">{statusTxt}</div>
         <div id="completed">
           <AudioPlayer />
           {completedMarkup}

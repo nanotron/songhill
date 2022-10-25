@@ -61,19 +61,6 @@ p.logo_bubble {
   width: -moz-available;
 }
 
-a, .btn-link {
-  color: var(--tron-blue);
-}
-
-.btn-link {
-  text-decoration: underline;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  font-size: 1em;
-  cursor: pointer;
-}
-
 .small-txt {
   font-size: 0.7em;
 }
@@ -98,7 +85,7 @@ a, .btn-link {
   margin-bottom: 0.25em;
 }
 
-#status_txt, #submit_container {
+#status_txt {
   display: none;
 }
 
@@ -159,6 +146,19 @@ form input[type='file'] {
   display: block;
 }
 
+a, .btn-link {
+  color: var(--tron-blue);
+}
+
+.btn-link {
+  text-decoration: underline;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 1em;
+  cursor: pointer;
+}
+
 input[type=submit], .btn {
   font-size: 1em;
   background: #2a2a2a;
@@ -173,13 +173,19 @@ input[type=submit], .btn {
 }
 
 input[type=submit]:hover, .btn:hover {
-  background: #3a3a3a;
+  background: #333;
+}
+
+input[type=submit].btn-disabled {
+  background: #2a2a2a;
+  border-color: #777;
+  color: #777;
+  /* cursor: not-allowed; */
 }
 
 footer {
   font-size: 1em;
   background: #111;
-  border-top: 3px solid #222;
   color: #aaa;
   padding: 0.75em 0.5em;
 }
