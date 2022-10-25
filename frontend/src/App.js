@@ -174,12 +174,13 @@ function App() {
     byId('process_icon').className = 'App-logo'
     if (error) {
       byId('error-txt').style.display = 'block'
-      const email_link = `${mailto}?subject=Error Report: ${uuid} - ${error}`
+      const error_txt = `${uuid} - ${error}`
+      const email_link = `${mailto}?subject=Error Report: ${error_txt}`
       setErrorTxt(<div>
         <div>An error has occurred.</div>
         <div>Please <button className="btn-link" onClick={() => window.location.reload()}>reload</button> or <a href={email_link}>contact us</a>.</div>
       </div>)
-      setStatusTxt(<div className='smaller-txt error-box'>${error}</div>)
+      setStatusTxt(<div className='smaller-txt error-box'>{error_txt}</div>)
     }
   }
 
