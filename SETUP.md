@@ -132,11 +132,11 @@ songhill/bin/songhill_restart_all.sh
 songhill/bin/songhill_backup_configs.sh
 
 
-# Crontab - Every 8 hours.
+# Crontab - Every hour.
 > Deletes any files older than 30 minutes.
 
 ```
-0 */8 * * * /usr/bin/python3 $HOME/songhill/backend/songhill/scripts/run_janitor.py
+0 * * * * /usr/bin/python3 $HOME/songhill/backend/songhill/scripts/run_janitor.py
 ```
 
 # Tips
