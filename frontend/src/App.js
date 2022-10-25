@@ -297,7 +297,7 @@ function App() {
           {completedMarkup}
         </div>
         { PRODMODE && <div id='ad'>
-          <div className='ad-test'>test</div>
+          <div className='ad-test'>Ad will go here.</div>
         </div>}
       </main>
       <footer>
