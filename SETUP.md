@@ -157,4 +157,4 @@ rm -rf ~/.cache/pip
 
 https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-20-04
 https://realpython.com/django-nginx-gunicorn/
-
+https://austinogiza.medium.com/deploying-react-and-django-rest-framework-with-nginx-and-gunicorn-7a0553459500
