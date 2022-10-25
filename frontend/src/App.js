@@ -15,7 +15,7 @@ function App() {
   const STEM_EXT = '.mp3'
   const STEM_TYPE = 'audio/mpeg'
   const mailto = 'mailto:songhill.com@gmail.com'
-  const leaveConfirmTxt = 'This session will be lost if you leave. Do you want to start over?'
+  const leaveConfirmTxt = 'This session will be lost. Do you want to start over?'
 
   const [ internalError, setInternalError ] = useState(false)
   const [ uuid, setUuid ] = useState()
