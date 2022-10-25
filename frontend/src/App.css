@@ -165,7 +165,7 @@ input[type=submit], .btn {
   color: var(--tron-blue);
   border: 4px solid var(--tron-blue);
   padding: 0.35em 1em;
-  margin: 1em auto 0.5em;
+  margin: 0.5em auto 0.5em;
   cursor: pointer;
   text-decoration: none;
   border-radius: 50px;
@@ -189,14 +189,16 @@ footer {
   color: #aaa;
   padding: 0.75em 0.5em;
 }
+
 footer a {
   color: #ccc;
 }
 
 .stems {
   font-size: 0.75em;
-  margin: .5em 0 0 0;
+  margin: 0.5em 0 1em 0;
 }
+
 .stem {
   background: #222;
   padding: 0.2em 0.3em;
@@ -207,6 +209,7 @@ footer a {
   justify-content: space-between;
   align-items: center;
 }
+
 .stem .stem_name {
   font-size: 0.7em;
   font-weight: bold;
@@ -215,11 +218,13 @@ footer a {
   padding: 0 0.7em 0 0.5em;
   order: 1;
 }
+
 .stem .btns {
   order: 2;
   display: flex;
   flex-flow: row nowrap;
 }
+
 .stem .btn {
   font-size: 0.6em;
   font-weight: bold;
@@ -227,25 +232,30 @@ footer a {
   border-width: 0.2em;
   margin: 0;
 }
+
 .btn.play, .btn.download {
   border: 2px solid #1a1a1a;
   background: #2c2c2c;
   padding: 0.4em 1em;
 }
+
 .btn.play:hover, .btn.download:hover {
   background: #333;
 }
+
 .btn.play {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   padding-right: 0.5em;
   border-right: 0;
 }
+
 .btn.download {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   padding-left: 0.5em;
 }
+
 .play_icon {
   height: 1.5em;
   vertical-align: middle;

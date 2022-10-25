@@ -57,6 +57,7 @@ function App() {
   // Only run provisionUser once during load of page.
   // Remove the empty array to apply with every page update.
   useEffect(() => {
+    window.scroll(0,0)
     fetch(`${API_PATH}/provision`)
     .then((response) => response.json())
     .then(data => {
@@ -89,8 +90,13 @@ function App() {
     })
   }
 
-  const showFileSelectError = () => {
+  const showErrorTxt = () => {
     byId('error-txt').style.display = 'block'
+    byId('error-txt').scrollIntoView(true)
+  }
+
+  const showFileSelectError = () => {
+    showErrorTxt()
     setErrorTxt(<div>Please select an audio file. <div className='small-txt'>e.g., mp3, wav, ogg, flac, etc.</div></div>)
   }
 
@@ -102,7 +108,7 @@ function App() {
     // Check file size.
     const is_size_valid = audio_file.size <= MAX_FILESIZE
     if (!is_audio_file || !is_size_valid) {
-      byId('error-txt').style.display = 'block'
+      showErrorTxt()
       byId('process_button').className = 'btn-disabled'
       setSubmitBtnDisabled(true)
     }
@@ -195,6 +201,7 @@ function App() {
     byId('completed').style.display = 'block'  
     byId('process_icon').className = 'App-logo'    
     if (response.data.status === 'complete') {
+      byId('status_txt').scrollIntoView()
       setStatusTxt(`Processing ${response.data.status}!`)
       sessionCountdown()
       setCompletedMarkup(<div>
@@ -209,8 +216,9 @@ function App() {
 
   const pageInProgress = () => {
     window.onbeforeunload = (e) => { return leaveConfirmTxt }
+    window.scroll(0,0)
     setStatusTxt(<div>
-      <div>Processing your tracks.<Dots /></div>
+      <div>Processing tracks.<Dots /></div>
       <div className="small-txt"><button className="btn-link" onClick={() => pageReset()}>Cancel processing</button></div>
     </div>)
     byId('status_txt').style.display = 'block'
