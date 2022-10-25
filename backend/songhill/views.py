@@ -135,10 +135,11 @@ def process(request):
           if os.path.exists(audio_output_dir):
             wav_files = glob.glob(f'{audio_output_dir}/*.wav')
             for wav_file in wav_files:
-              stem_file = f"{wav_file.replace('.wav','')}.{STEM_EXT}"
-              AudioSegment.from_wav(wav_file).export(stem_file, format=STEM_EXT)
-              if os.path.exists(stem_file):
-                os.remove(wav_file)
+              if os.path.exists(wav_file):
+                stem_file = f"{wav_file.replace('.wav','')}.{STEM_EXT}"
+                AudioSegment.from_wav(wav_file).export(stem_file, format=STEM_EXT)
+                if os.path.exists(stem_file):
+                  os.remove(wav_file)
             output_stems = os.listdir(audio_output_dir)
 
         status_text = 'complete'
