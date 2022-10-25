@@ -28,7 +28,7 @@ function App() {
     PRODMODE = false
   }
 
-  const API_PATH = PRODMODE ? '/api' : '';
+  const API_PATH = PRODMODE ? '/api' : ''
 
   const byId = (id) => {
     return document.getElementById(id)
@@ -227,9 +227,9 @@ function App() {
       pageProcessComplete(response)
     })
     .catch((error) => {
-      console.log(error.toJSON());
+      console.log(error.toJSON())
       handlePageError(error.message)
-    });
+    })
   }
 
   const pageResetConfirmed = () => {
