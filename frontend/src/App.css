@@ -2,11 +2,11 @@
   --tron-blue: #0ff;
 }
 
-.App {
+.songhill {
   text-align: center;
 }
 
-.App-main {
+.songhill-main {
   background-color: #161616;
   min-height: 100vh;
   display: flex;
@@ -18,16 +18,16 @@
   padding: 0.5em 0 1em 0;
 }
 
-.App-logo, .App-logo-anim {
+.songhill-logo, .songhill-logo-anim {
   height: 30vmin;
   pointer-events: none;
 }
 
-.App-logo-anim {
-  animation: App-logo-spin infinite 5s linear;
+.songhill-logo-anim {
+  animation: songhill-logo-spin infinite 5s linear;
 }
 
-@keyframes App-logo-spin {
+@keyframes songhill-logo-spin {
   from {
     transform: rotate(0deg);
   }
@@ -42,7 +42,7 @@
   font-style: italic;
 }
 
-p.logo_bubble {
+p.logo-bubble {
   margin-bottom: 0.5em;
 }
 
@@ -80,12 +80,9 @@ p.logo_bubble {
   color: #f00;
 }
 
-#status_txt {
+#status-txt {
   font-size: 0.8em;
   margin-bottom: 0.25em;
-}
-
-#status_txt {
   display: none;
 }
 
@@ -279,7 +276,7 @@ footer a {
 /* Mobile */
 
 @media screen and (max-width:720px) {
-  .App-main {
+  .songhill-main {
     justify-content: flex-start;
     font-size: 1.6em;
     padding: 1em 0;

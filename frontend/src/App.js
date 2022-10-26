@@ -50,7 +50,7 @@ function App() {
   }
 
   const showError = () => {
-    byId('process_form').style.display = 'none'
+    byId('form-process').style.display = 'none'
     setErrorTxt(ErrorCommon)
   }
 
@@ -71,7 +71,7 @@ function App() {
     })
 
     if (internalError) {
-      byId('process_form').style.display = 'none'
+      byId('form-process').style.display = 'none'
       setErrorTxt(ErrorCommon)
     }
   }, [internalError, API_PATH])
@@ -136,7 +136,7 @@ function App() {
       byId('audio_player').title = now_playing
       byId('audio_player').load()
       byId('audio_player').play()      
-      byId('status_txt').innerText = now_playing
+      byId('status-txt').innerText = now_playing
     })
     .catch(function() {
       showError()
@@ -172,7 +172,7 @@ function App() {
         clearInterval(timer)
         purgeFiles()
         byId('error-txt').style.display = 'block'
-        byId('status_txt').style.display = 'none'
+        byId('status-txt').style.display = 'none'
         byId('completed').style.display = 'none'
         setErrorTxt(<div>Your session has expired. Please reload or <button className="btn-link" onClick={() => pageResetConfirmed()}>start over</button>.</div>)
       } else {
@@ -184,7 +184,7 @@ function App() {
   const handlePageError = (error) => {
     window.onbeforeunload = () => {}
     purgeFiles()
-    byId('process_icon').className = 'App-logo'
+    byId('icon-process').className = 'songhill-logo'
     if (error) {
       byId('error-txt').style.display = 'block'
       const error_txt = `${uuid} - ${error}`
@@ -199,9 +199,9 @@ function App() {
 
   const pageProcessComplete = (response) => {
     byId('completed').style.display = 'block'  
-    byId('process_icon').className = 'App-logo'    
+    byId('icon-process').className = 'songhill-logo'
     if (response.data.status === 'complete') {
-      byId('status_txt').scrollIntoView()
+      byId('status-txt').scrollIntoView()
       setStatusTxt(`Processing ${response.data.status}!`)
       sessionCountdown()
       setCompletedMarkup(<div>
@@ -219,11 +219,11 @@ function App() {
     window.scroll(0,0)
     setStatusTxt(<div>
       <div>Processing tracks.<Dots /></div>
-      <div className="small-txt"><button className="btn-link" onClick={() => pageReset()}>Cancel processing</button></div>
+      <div className="small-txt"><button className="btn-link" onClick={() => pageReset()}>Cancel</button></div>
     </div>)
-    byId('status_txt').style.display = 'block'
-    byId('process_icon').className = 'App-logo-anim'
-    byId('process_form').style.display = 'none'
+    byId('status-txt').style.display = 'block'
+    byId('icon-process').className = 'songhill-logo-anim'
+    byId('form-process').style.display = 'none'
   }
 
   const processFile = async (e) => {
@@ -292,12 +292,12 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <main className="App-main">
+    <div className="songhill">
+      <main className="songhill-main">
         <h2 className="title">songhill</h2>
         <div className="subtitle">audio separation</div>
-        <p className="logo_bubble"><img alt="songhill" id="process_icon" className="App-logo" src={logo} /></p>
-        <form onSubmit={(e) => processFile(e)} id="process_form">
+        <p className="logo-bubble"><img alt="songhill" id="icon-process" className="songhill-logo" src={logo} /></p>
+        <form onSubmit={(e) => processFile(e)} id="form-process">
           <label>
             <h4>Choose a Separation Type</h4>
             <select name="stems" defaultValue="4">
@@ -317,7 +317,7 @@ function App() {
           </div>
         </form>
         <div id="error-txt" className="error-txt">{errorTxt}</div>
-        <div id="status_txt">{statusTxt}</div>
+        <div id="status-txt">{statusTxt}</div>
         <div id="completed">
           <AudioPlayer />
           {completedMarkup}
