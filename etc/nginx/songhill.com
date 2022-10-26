@@ -2,6 +2,9 @@
 
 server {
 	client_max_body_size 200M;
+	proxy_read_timeout 600;
+	proxy_connect_timeout 600;
+	proxy_send_timeout 600;
 
 	server_name songhill.com www.songhill.com;
 	server_tokens off;
