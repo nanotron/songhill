@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import logo from './songhill-logo.png'
 import play_icon from './play.png'
-import './App.css'
+import './Songhill.css'
 
-function App() {
+function Songhill() {
   let fileData = {}
 
   // 15 minutes.
@@ -334,4 +334,4 @@ function App() {
   )
 }
 
-export default App
+export default Songhill
