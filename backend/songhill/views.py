@@ -136,7 +136,7 @@ def process(request):
       file_valid = is_file_valid(file_in)
       if file_valid:
         myLogger('Spleeting begins')
-        separator = Separator(f'spleeter:{stem_type}stems', stft_backend="librosa", multiprocess=False)
+        separator = Separator(f'spleeter:{stem_type}stems')
         separator.separate_to_file(file_in, file_out_dir)
         spleeting_complete = True
     except Exception as e:
