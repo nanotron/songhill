@@ -1,3 +1,11 @@
+# Current Production Server
+
+8GB RAM Linode 
+4 CPU Cores
+160 GB Storage
+Debian Linux 11 Bullseye
+
+
 # Hostname
 
 sudo hostnamectl set-hostname songhill
