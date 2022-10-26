@@ -29,7 +29,7 @@ MAX_FILE_SIZE = 200000000
 # Max file age = 30 minutes (1800 seconds).
 MAX_FILE_AGE = 1800
 ERROR_REASON = ''
-CONVERT_TO_MP3 = True
+CONVERT_TO_MP3 = False
 DELETE_OUTPUT_DIR = False
 STEM_EXT = 'mp3'
 STEM_TYPE = 'audio/mpeg'
@@ -145,7 +145,7 @@ def process(request):
 
     # Convert wav files to mp3.
     try:
-      if spleeting_complete and CONVERT_TO_MP3 and os.path.exists(audio_output_dir):
+      if CONVERT_TO_MP3 and spleeting_complete and os.path.exists(audio_output_dir):
         wav_files = glob.glob(f'{audio_output_dir}/*.wav')
         for wav_file in wav_files:
           if os.path.exists(wav_file):
