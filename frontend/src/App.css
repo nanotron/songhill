@@ -64,6 +64,7 @@ p.logo-bubble {
 .small-txt {
   font-size: 0.7em;
 }
+
 .smaller-txt {
   font-size: 0.5em;
 }
@@ -84,6 +85,10 @@ p.logo-bubble {
   font-size: 0.8em;
   margin-bottom: 0.25em;
   display: none;
+}
+
+.processing-txt {
+  margin-bottom: 0.25em;
 }
 
 h2.title {

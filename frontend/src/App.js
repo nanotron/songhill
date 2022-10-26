@@ -218,7 +218,7 @@ function App() {
     window.onbeforeunload = (e) => { return leaveConfirmTxt }
     window.scroll(0,0)
     setStatusTxt(<div>
-      <div>Processing tracks.<Dots /></div>
+      <div className="processing-txt">Processing tracks.<Dots /></div>
       <div className="small-txt"><button className="btn-link" onClick={() => pageReset()}>Cancel</button></div>
     </div>)
     byId('status-txt').style.display = 'block'
