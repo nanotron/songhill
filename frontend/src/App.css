@@ -172,6 +172,10 @@ input[type=submit], .btn {
   width: auto;
 }
 
+input[type=submit] {
+  margin-top: 0.75em;
+}
+
 input[type=submit]:hover, .btn:hover {
   background: #333;
 }
