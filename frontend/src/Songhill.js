@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import logo from './songhill-logo.png'
+import logo from './songhill-logo.webp'
 import play_icon from './play.png'
 import './Songhill.css'
 
