@@ -1,3 +1,4 @@
+import gc
 import glob
 import json
 import logging
@@ -104,6 +105,7 @@ def return_file(request, contentType = "application/zip"):
 
 def handle_processing_exception(file_in, audio_output_dir):
   myLogger('Processing error')
+  gc.collect()
   if os.path.exists(file_in):
     delete_input_file(file_in)
   if os.path.exists(audio_output_dir):
