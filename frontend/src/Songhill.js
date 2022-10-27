@@ -191,7 +191,7 @@ function Songhill() {
       const email_link = `${mailto}?subject=Error Report: ${error_txt}`
       setErrorTxt(<div>
         <div>An error has occurred.</div>
-        <div>Please <button className="btn-link" onClick={() => window.location.reload()}>reload</button> or <a href={email_link}>contact us</a>.</div>
+        <div>Please <button className="btn-link" onClick={() => window.location.reload()}>try again</button> or <a href={email_link}>contact us</a>.</div>
       </div>)
       setStatusTxt(<div className='smaller-txt error-box'>{error_txt}</div>)
     }
