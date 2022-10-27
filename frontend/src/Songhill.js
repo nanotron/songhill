@@ -174,7 +174,7 @@ function Songhill() {
         byId('error-txt').style.display = 'block'
         byId('status-txt').style.display = 'none'
         byId('completed').style.display = 'none'
-        setErrorTxt(<div>Your session has expired. Please reload or <button className="btn-link" onClick={() => pageResetConfirmed()}>start over</button>.</div>)
+        setErrorTxt(<div>Your session has expired. Please <button className="btn-link" onClick={() => pageResetConfirmed()}>try again</button>.</div>)
       } else {
         time_left = time_left - 1000
       }
@@ -191,7 +191,7 @@ function Songhill() {
       const email_link = `${mailto}?subject=Error Report: ${error_txt}`
       setErrorTxt(<div>
         <div>An error has occurred.</div>
-        <div>Please <button className="btn-link" onClick={() => window.location.reload()}>try again</button> or <a href={email_link}>contact us</a>.</div>
+        <div>Please <button className="btn-link" onClick={() => pageResetConfirmed()}>try again</button> or <a href={email_link}>contact us</a>.</div>
       </div>)
       setStatusTxt(<div className='smaller-txt error-box'>{error_txt}</div>)
     }
