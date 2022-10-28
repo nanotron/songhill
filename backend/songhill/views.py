@@ -105,12 +105,12 @@ def return_file(request, contentType = "application/zip"):
 
 def handle_processing_exception(file_in, audio_output_dir):
   myLogger('Processing error')
-  gc.collect()
   if os.path.exists(file_in):
     delete_input_file(file_in)
   if os.path.exists(audio_output_dir):
     shutil.rmtree(audio_output_dir)
   LOG.error(str(e))
+  gc.collect()
   return JsonResponse({'error': str(e)})
 
 @require_http_methods(['POST'])
@@ -141,6 +141,7 @@ def process(request):
         separator = Separator(f'spleeter:{stem_type}stems')
         separator.separate_to_file(file_in, file_out_dir)
         spleeting_complete = True
+        del separator
     except Exception as e:
       del separator
       handle_processing_exception(file_in, audio_output_dir)
@@ -155,6 +156,7 @@ def process(request):
             audioSegment = AudioSegment.from_wav(wav_file).export(stem_file, format=STEM_EXT)
             if os.path.exists(stem_file):
               os.remove(wav_file)
+              del audioSegment
         output_stems = os.listdir(audio_output_dir)
         status_text = 'complete'
       else:
