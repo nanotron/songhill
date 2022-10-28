@@ -4,10 +4,10 @@
 
 .songhill {
   text-align: center;
+  background-color: #161616;
 }
 
 .songhill-main {
-  background-color: #161616;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -191,9 +191,8 @@ input[type=submit].btn-disabled {
 
 footer {
   font-size: 1em;
-  background: #090909;
   color: #999;
-  padding: 0.75em 0.5em;
+  padding: 0.75em 0.5em 2em 0.5em;
 }
 
 footer a {
