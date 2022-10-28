@@ -155,6 +155,7 @@ a, .btn-link {
 .btn-link {
   text-decoration: underline;
   padding: 0;
+  margin-top: 0.5em;
   border: 0;
   background: transparent;
   font-size: 1em;
