@@ -117,7 +117,7 @@ def handle_processing_exception(file_in, audio_output_dir):
 def process(request):
   if request.method == 'POST':
     spleeting_complete = False
-    status_text = ''   
+    status_text = ''
     uuid = request.POST.get('uuid')
     stem_type = request.POST.get('type')
     audio_file = request.FILES['file']
