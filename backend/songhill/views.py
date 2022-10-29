@@ -26,13 +26,13 @@ from .utils.janitor import Janitor
 
 LOG = logging.getLogger(__name__)
 
-MY_LOGGER_ACTIVE = True
+MY_LOGGER_ACTIVE = False
 # Max file size = 200 megabytes.
 MAX_FILE_SIZE = 200000000
 # Max file age = 30 minutes (1800 seconds).
 MAX_FILE_AGE = 1800
 # Wait for CPU to be less than CPU_MAX_PERC before proceeding with processing.
-CPU_MAX_PERC = 90
+CPU_MAX_PERC = 80
 ERROR_REASON = ''
 CONVERT_TO_MP3 = True
 DELETE_OUTPUT_DIR = False
