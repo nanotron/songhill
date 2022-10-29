@@ -103,15 +103,15 @@ def return_file(request, contentType = "application/zip"):
 # Endpoints #
 #############
 
-def handle_processing_exception(file_in, audio_output_dir):
+def handle_processing_exception(error, file_in, audio_output_dir):
   myLogger('Processing error')
   if os.path.exists(file_in):
     delete_input_file(file_in)
   if os.path.exists(audio_output_dir):
     shutil.rmtree(audio_output_dir)
-  LOG.error(str(e))
+  LOG.error(str(error))
   gc.collect()
-  return JsonResponse({'error': str(e)})
+  return JsonResponse({'error': str(error)})
 
 @require_http_methods(['POST'])
 def process(request):
@@ -142,9 +142,9 @@ def process(request):
         separator.separate_to_file(file_in, file_out_dir)
         spleeting_complete = True
         del separator
-    except Exception as e:
+    except Exception as error:
       del separator
-      handle_processing_exception(file_in, audio_output_dir)
+      handle_processing_exception(error, file_in, audio_output_dir)
 
     # Convert wav files to mp3.
     try:
@@ -177,8 +177,8 @@ def process(request):
 
       gc.collect()
       return JsonResponse(response)
-    except Exception as e:
-      handle_processing_exception(file_in, audio_output_dir)
+    except Exception as error:
+      handle_processing_exception(error, file_in, audio_output_dir)
 
 
 # Provision the session.
@@ -227,6 +227,6 @@ def purge(request):
           shutil.rmtree(file)
 
       return HttpResponse(headers={'status': 'cleaned'})
-    except Exception as e:
-      myLogger(f'Purge error: {e}')
+    except Exception as error:
+      myLogger(f'Purge error: {error}')
       return HttpResponse(headers={'status': 'error'})
