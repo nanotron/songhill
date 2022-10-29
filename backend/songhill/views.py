@@ -3,9 +3,11 @@ import glob
 import json
 import logging
 import os
+import psutil
 import re
 import shutil
 import uuid
+import threading
 
 import magic
 from django.conf import settings
@@ -24,7 +26,7 @@ from .utils.janitor import Janitor
 
 LOG = logging.getLogger(__name__)
 
-MY_LOGGER_ACTIVE = False
+MY_LOGGER_ACTIVE = True
 # Max file size = 200 megabytes.
 MAX_FILE_SIZE = 200000000
 # Max file age = 30 minutes (1800 seconds).
@@ -103,6 +105,15 @@ def return_file(request, contentType = "application/zip"):
 # Endpoints #
 #############
 
+CPU_MAX_PERC = 80
+cpu_state = None
+cpu_available = threading.Event()
+
+def wait_for_cpu():
+  cpu_perc = round(psutil.cpu_percent())
+  if cpu_perc < CPU_MAX_PERC:
+    cpu_available.set()
+
 def handle_processing_exception(error, file_in, audio_output_dir):
   myLogger('Processing error')
   if os.path.exists(file_in):
@@ -133,7 +144,12 @@ def process(request):
     file_name_no_ext = os.path.splitext(file_name)[0]
     audio_output_dir = f'{file_out_dir}{file_name_no_ext}'
 
-     # Process audio and save stems.
+    # Process audio and save stems.
+    myLogger('Waiting on CPU')
+    thread = threading.Thread(target=wait_for_cpu)
+    thread.start()
+    cpu_available.wait()
+
     try:
       file_valid = is_file_valid(file_in)
       if file_valid:
