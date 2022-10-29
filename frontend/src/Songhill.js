@@ -289,6 +289,10 @@ function Songhill() {
         callback()
       }
     })
+    .catch(function (error) {
+      console.log(error.toJSON())
+      pageResetConfirmed()
+    });
   }
 
   return (
