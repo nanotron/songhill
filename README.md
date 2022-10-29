@@ -1,6 +1,6 @@
 # songhill
 
-Spleeter-based audio separation and stem creation. Separate and isolate vocals, drums, bass, guitar, and other parts of a song track.
+Spleeter-based audio separation and stem creation. Separate and isolate vocals, drums, bass, guitar, and other parts of a song.
 
 * Django backend with React frontend.
 * Runs under Nginx with Gunicorn.
