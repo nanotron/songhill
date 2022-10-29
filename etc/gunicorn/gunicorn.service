@@ -8,11 +8,13 @@ User=www-data
 Group=www-data
 WorkingDirectory=/var/www/songhill/backend
 ExecStart=/var/www/songhill/backend/venv/bin/gunicorn \
-	--capture-output \
+#	To see django output:
+#	--capture-output \
 	--log-level info \
 	--access-logfile /var/log/gunicorn/socket.log \
 	--error-logfile /var/log/gunicorn/socket.log \
-	--workers 3 \
+	--workers 1 \
+	--threads 1 \
 	--timeout 600 \
 	--bind unix:/var/www/songhill/backend/gunicorn.sock \
 	backend.wsgi:application
