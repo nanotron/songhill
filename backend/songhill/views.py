@@ -31,6 +31,8 @@ MY_LOGGER_ACTIVE = True
 MAX_FILE_SIZE = 200000000
 # Max file age = 30 minutes (1800 seconds).
 MAX_FILE_AGE = 1800
+# Wait for CPU to be less than CPU_MAX_PERC before proceeding with processing.
+CPU_MAX_PERC = 90
 ERROR_REASON = ''
 CONVERT_TO_MP3 = True
 DELETE_OUTPUT_DIR = False
@@ -105,7 +107,6 @@ def return_file(request, contentType = "application/zip"):
 # Endpoints #
 #############
 
-CPU_MAX_PERC = 80
 cpu_state = None
 cpu_available = threading.Event()
 
