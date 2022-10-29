@@ -5,7 +5,6 @@ import logging
 import os
 import re
 import shutil
-import time
 import uuid
 
 import magic
@@ -13,11 +12,10 @@ from django.conf import settings
 from django.core.files.storage import default_storage
 from django.http import Http404, HttpResponse, JsonResponse
 from django.middleware import csrf
-from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
+
 from pydub import AudioSegment
 from spleeter.separator import Separator
-
 from .utils.janitor import Janitor
 
 ########
@@ -25,6 +23,8 @@ from .utils.janitor import Janitor
 ########
 
 LOG = logging.getLogger(__name__)
+
+MY_LOGGER_ACTIVE = False
 # Max file size = 200 megabytes.
 MAX_FILE_SIZE = 200000000
 # Max file age = 30 minutes (1800 seconds).
@@ -46,9 +46,9 @@ file_in = ''
 ###########
 
 def myLogger(text):
-  log_txt = f'SONGHILL: {text}'
-  return print(log_txt)
-  # return LOG.info(log_txt)
+  if MY_LOGGER_ACTIVE:
+    log_txt = f'SONGHILL: {text}'
+    return print(log_txt)
 
 def is_file_valid(file_in):
   valid_file = False
@@ -153,10 +153,10 @@ def process(request):
         for wav_file in wav_files:
           if os.path.exists(wav_file):
             stem_file = f"{wav_file.replace('.wav','')}.{STEM_EXT}"
-            audioSegment = AudioSegment.from_wav(wav_file).export(stem_file, format=STEM_EXT)
+            AudioSegment.from_wav(wav_file).export(stem_file, format=STEM_EXT)
             if os.path.exists(stem_file):
               os.remove(wav_file)
-              del audioSegment
+      
         output_stems = os.listdir(audio_output_dir)
         status_text = 'complete'
       else:
@@ -178,7 +178,6 @@ def process(request):
       gc.collect()
       return JsonResponse(response)
     except Exception as e:
-      del audioSegment
       handle_processing_exception(file_in, audio_output_dir)
 
 
