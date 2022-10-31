@@ -291,7 +291,8 @@ function Songhill() {
     })
     .catch(function (error) {
       console.log(error.toJSON())
-      pageResetConfirmed()
+      window.onbeforeunload = () => {}
+      window.location.reload()
     });
   }
 
