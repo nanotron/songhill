@@ -31,8 +31,8 @@ MY_LOGGER_ACTIVE = False
 MAX_FILE_SIZE = 200000000
 # Max file age = 30 minutes (1800 seconds).
 MAX_FILE_AGE = 1800
-# Wait for CPU to be less than CPU_MAX_PERC before proceeding with processing.
-CPU_MAX_PERC = 80
+# Wait for CPU to be less than MAX_CPU_MEM_PERC before proceeding with processing.
+MAX_CPU_MEM_PERC = 80
 ERROR_REASON = ''
 CONVERT_TO_MP3 = True
 DELETE_OUTPUT_DIR = False
@@ -107,13 +107,13 @@ def return_file(request, contentType = "application/zip"):
 # Endpoints #
 #############
 
-cpu_state = None
-cpu_available = threading.Event()
+cpu_mem_available = threading.Event()
 
 def wait_for_cpu():
   cpu_perc = round(psutil.cpu_percent())
-  if cpu_perc < CPU_MAX_PERC:
-    cpu_available.set()
+  mem_perc = round(psutil.virtual_memory().percent)
+  if cpu_perc < MAX_CPU_MEM_PERC and mem_perc < MAX_CPU_MEM_PERC:
+    cpu_mem_available.set()
 
 def handle_processing_exception(error, file_in, audio_output_dir):
   myLogger('Processing error')
@@ -149,7 +149,7 @@ def process(request):
     myLogger('Waiting on CPU')
     thread = threading.Thread(target=wait_for_cpu)
     thread.start()
-    cpu_available.wait()
+    cpu_mem_available.wait()
 
     try:
       file_valid = is_file_valid(file_in)
