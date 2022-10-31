@@ -1,3 +1,4 @@
+import gc
 import glob
 import json
 import logging
@@ -121,6 +122,7 @@ def handle_processing_exception(error, file_in, audio_output_dir):
   if os.path.exists(audio_output_dir):
     shutil.rmtree(audio_output_dir)
   LOG.error(str(error))
+  gc.collect()
   return JsonResponse({'error': str(error)})
 
 @require_http_methods(['POST'])
@@ -190,6 +192,7 @@ def process(request):
       if not DELETE_OUTPUT_DIR:
         response['stems'] = output_stems
 
+      gc.collect()
       return JsonResponse(response)
     except Exception as error:
       handle_processing_exception(error, file_in, audio_output_dir)
