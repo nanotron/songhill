@@ -15,7 +15,8 @@ ExecStart=/var/www/songhill/backend/venv/bin/gunicorn \
 	--error-logfile /var/log/gunicorn/socket.log \
 	--workers 1 \
 	--threads 1 \
-	--timeout 600 \
+	--timeout 300 \
+	--graceful-timeout 300 \
 	--bind unix:/var/www/songhill/backend/gunicorn.sock \
 	backend.wsgi:application
 
