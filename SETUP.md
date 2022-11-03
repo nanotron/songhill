@@ -137,7 +137,7 @@ songhill/bin/songhill_deploy.sh
 
 # Restart nginx and gunicorn only
 
-songhill/bin/songhill_restart_all.sh
+songhill/bin/songhill_restart_services.sh
 
 
 # Backup existing nginx and gunicorn etc configs
