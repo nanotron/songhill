@@ -89,6 +89,11 @@ python manage.py collectstatic
 NOTE: `songhill/backend/.env` file will need to be added manually with the appropriate `SECRET_KEY=` value.
 
 
+# .env Config
+
+Add .env manually to `songhill/backend/`.
+
+
 # Nginx
 
 sudo cp /var/www/songhill/etc/nginx/nginx.conf /etc/nginx/sites-available/
