@@ -112,6 +112,7 @@ cpu_mem_available = threading.Event()
 def wait_for_cpu():
   cpu_perc = round(psutil.cpu_percent())
   mem_perc = round(psutil.virtual_memory().percent)
+  cpu_mem_available.clear()
   if cpu_perc < MAX_CPU_MEM_PERC and mem_perc < MAX_CPU_MEM_PERC:
     cpu_mem_available.set()
 
