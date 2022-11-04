@@ -141,7 +141,7 @@ def process(request):
     # Save uploaded file.
     if os.path.exists(file_full_path):
       os.remove(file_full_path)
-    file_saved = default_storage.save(file_full_path, audio_file)
+    default_storage.save(file_full_path, audio_file)
     file_in = file_full_path
     file_name_no_ext = os.path.splitext(file_name)[0]
     audio_output_dir = f'{file_out_dir}{file_name_no_ext}'
