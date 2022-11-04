@@ -156,12 +156,9 @@ def process(request):
       file_valid = is_file_valid(file_in)
       if file_valid:
         myLogger('Spleeting begins')
-        separator = Separator(f'spleeter:{stem_type}stems')
-        separator.separate_to_file(file_in, file_out_dir)
+        Separator(f'spleeter:{stem_type}stems').separate_to_file(file_in, file_out_dir)
         spleeting_complete = True
-        del separator
     except Exception as error:
-      del separator
       handle_processing_exception(error, file_in, audio_output_dir)
 
     # Convert wav files to mp3.
