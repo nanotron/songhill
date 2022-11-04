@@ -190,7 +190,6 @@ def process(request):
       if not DELETE_OUTPUT_DIR:
         response['stems'] = output_stems
 
-      gc.collect()
       return JsonResponse(response)
     except Exception as error:
       handle_processing_exception(error, file_in, audio_output_dir)
