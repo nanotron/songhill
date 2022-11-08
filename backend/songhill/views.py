@@ -171,11 +171,9 @@ def process(request):
             AudioSegment.from_wav(wav_file).export(stem_file, format=STEM_EXT)
             if os.path.exists(stem_file):
               os.remove(wav_file)
-      
-        output_stems = os.listdir(audio_output_dir)
-        status_text = 'complete'
-      else:
-        status_text = 'failed'
+
+      output_stems = os.listdir(audio_output_dir)
+      status_text = 'complete'
 
       if DELETE_OUTPUT_DIR:
         delete_output_dir(audio_output_dir)
