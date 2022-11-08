@@ -34,7 +34,7 @@ MAX_FILE_AGE = 1800
 # Wait for CPU to be less than MAX_CPU_MEM_PERC before proceeding with processing.
 MAX_CPU_MEM_PERC = 80
 ERROR_REASON = ''
-CONVERT_TO_MP3 = True
+CONVERT_TO_MP3 = False
 DELETE_OUTPUT_DIR = False
 STEM_EXT = 'mp3'
 STEM_TYPE = 'audio/mpeg'
