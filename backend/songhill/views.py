@@ -134,7 +134,7 @@ def process(request):
     uuid = request.POST.get('uuid')
     stem_type = request.POST.get('type')
     audio_file = request.FILES['file']
-    file_name_orig = request.FILES['file'].name
+    file_name_orig = audio_file.name
     file_name = process_file_name(file_name_orig, uuid)
     file_full_path = file_in_dir+file_name
 
@@ -142,8 +142,6 @@ def process(request):
     if os.path.exists(file_full_path):
       os.remove(file_full_path)
     default_storage.save(file_full_path, audio_file)
-    del audio_file
-    gc.collect()
     file_in = file_full_path
     file_name_no_ext = os.path.splitext(file_name)[0]
     audio_output_dir = f'{file_out_dir}{file_name_no_ext}'
@@ -173,8 +171,6 @@ def process(request):
             AudioSegment.from_wav(wav_file).export(stem_file, format=STEM_EXT)
             if os.path.exists(stem_file):
               os.remove(wav_file)
-        del wav_files
-        gc.collect()
 
       output_stems = os.listdir(audio_output_dir)
       status_text = 'complete'
@@ -227,8 +223,6 @@ def zip(request):
   if not os.path.exists(zip_fullpath):
     zip_fullpath = shutil.make_archive(audio_output_dir, 'zip', audio_output_dir)
     zip_filename = zip_fullpath.split('/').pop()
-    del zip_fullpath
-    gc.collect()
 
   return return_file(zip_filename, "application/zip")
 
