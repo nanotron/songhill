@@ -33,8 +33,6 @@ server {
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 }
 
-
-
 server {
     if ($host = www.songhill.com) {
         return 301 https://$host$request_uri;
