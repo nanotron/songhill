@@ -21,7 +21,7 @@ npm run build
 output "Django manage.py updates"
 cd $SONGHILL_ROOT/backend
 source venv/bin/activate
-python manage.py migrate --no-input
+#python manage.py migrate --no-input
 python manage.py collectstatic --no-input
 
 output "Restarting services"

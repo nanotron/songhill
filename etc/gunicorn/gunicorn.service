@@ -14,8 +14,8 @@ ExecStart=/var/www/songhill/backend/venv/bin/gunicorn \
 	--log-level info \
 	--access-logfile /var/log/gunicorn/socket.log \
 	--error-logfile /var/log/gunicorn/socket.log \
-#	--max-requests 1000 \
-#	--max-requests-jitter 50 \
+	--max-requests 16 \
+	--max-requests-jitter 8 \
 	--workers 1 \
 	--threads 1 \
 	--timeout 600 \
