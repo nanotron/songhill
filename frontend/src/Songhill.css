@@ -3,23 +3,24 @@
 }
 
 .songhill {
+  min-height: 100vh;
   text-align: center;
   background-color: #161616;
 }
 
 .songhill-main {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 2.5em;
   color: white;
-  padding: 0.5em 0 1em 0;
+  padding: 2em 0 0.5em 0;
 }
 
 .songhill-logo, .songhill-logo-anim {
-  height: 30vmin;
+  height: 20vmin;
   pointer-events: none;
 }
 
@@ -36,7 +37,26 @@
   }
 }
 
-/* Mine */
+.info-box {
+  color: #999;
+  font-size: 1.25em;
+  text-align: left;
+  background: #111;
+  padding: 0.5em 4em;
+  margin-top: 2em;
+  border-top: 5px solid #222;
+  border-bottom: 5px solid #222;
+}
+
+footer {
+  font-size: 1em;
+  color: #999;
+  padding: 1.75em 0.5em;
+}
+
+footer a {
+  color: #ccc;
+}
 
 .subtitle {
   font-style: italic;
@@ -62,7 +82,7 @@ p.logo-bubble {
 }
 
 .small-txt {
-  font-size: 0.7em;
+  font-size: 0.75em;
 }
 
 .smaller-txt {
@@ -108,6 +128,10 @@ form h4 {
   margin: 0 0 0 0;
   padding: 0.4em 0;
   color: #fff;
+
+  /* background: #1c1c1c;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em; */
 }
 
 form select {
@@ -184,16 +208,6 @@ input[type=submit].btn-disabled {
   background: #222;
   border-color: #777;
   color: #777;
-}
-
-footer {
-  font-size: 1em;
-  color: #999;
-  padding: 0.75em 0.5em 2em 0.5em;
-}
-
-footer a {
-  color: #ccc;
 }
 
 .stems {
@@ -280,7 +294,14 @@ footer a {
   .songhill-main {
     justify-content: flex-start;
     font-size: 1.6em;
-    padding: 1em 0;
+    padding-top: 1.5em;
+  }
+  .songhill-logo, .songhill-logo-anim {
+    height: 30vmin;
+  }
+  .info-box {
+    padding: 0.5em 1em;
+    font-size: 0.8em;
   }
   .stem {
     font-size: 1.1em;

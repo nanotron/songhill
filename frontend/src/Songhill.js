@@ -300,11 +300,11 @@ function Songhill() {
     <div className="songhill">
       <main className="songhill-main">
         <h2 className="title">songhill</h2>
-        <div className="subtitle">audio separation</div>
+        <div className="subtitle">free audio separation</div>
         <p className="logo-bubble"><img alt="songhill" id="icon-process" className="songhill-logo" src={logo} /></p>
         <form onSubmit={(e) => processFile(e)} id="form-process">
           <label>
-            <h4>Choose a Separation Type</h4>
+            <h4>Separation Type</h4>
             <select name="stems" defaultValue="4">
               <option value="2">2 Stems: Vocals and Accompaniment</option>
               <option value="4">4 Stems: Vocals, Drums, Bass, Other</option>
@@ -312,7 +312,7 @@ function Songhill() {
             </select>
           </label>
           <label>
-            <h4>Select an Audio File</h4>
+            <h4>Select Audio File</h4>
             <div className="field_container">
               <input name="file" type="file" onChange={(e) => handleFileAdd(e)} />
             </div>
@@ -327,13 +327,22 @@ function Songhill() {
           <AudioPlayer />
           {completedMarkup}
         </div>
-        { PRODMODE && <div id='ad'>
-          <div className='ad-test'>Ad will go here.</div>
+        { PRODMODE && <div id="ad">
+          <div className="ad-test">Ad will go here.</div>
         </div>}
       </main>
+      <div className="info-box">
+        <p>Use Songhill to separate and isolate song tracks into their individual parts.</p>
+        <p>
+        Songhill is especially useful to musicians, singers, and students who are practicing and learning specific parts of a song.
+        Songhill uses the <a rel="noreferrer" target="_blank" href="https://github.com/deezer/spleeter">Spleeter</a> separation library which attempts to produce the best possible separation for instrumental and vocal parts.
+        </p>
+        <p>
+        Our tool is free and is intended to promote and support the growth of musical learning, practice, and performance. Enjoy!
+        </p>
+      </div>
       <footer>
         &copy; 2022 songhill.com. <a href={mailto}>Contact us</a>.
-        <div>Audio processing provided by <a rel="noreferrer" target="_blank" href="https://github.com/deezer/spleeter">Spleeter</a>.</div>
       </footer>
     </div>
   )
