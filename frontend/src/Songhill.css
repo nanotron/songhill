@@ -13,6 +13,7 @@
   display: flex;
   flex-direction: column;
   background-color: #161616;
+  width: 30em;
   min-width: 14em;
   font-size: 2.5em;
   color: white;
@@ -315,6 +316,7 @@ input[type=submit].btn-disabled {
     display: block;
   }
   .songhill-main {
+    width: auto;
     min-width: auto;
     font-size: 1.5em;
     padding: 1em 1em 1.5em 1em;
