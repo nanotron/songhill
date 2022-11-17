@@ -218,7 +218,7 @@ function Songhill() {
     window.onbeforeunload = (e) => { return leaveConfirmTxt }
     window.scroll(0,0)
     setStatusTxt(<div>
-      <div className="processing-txt">Processing tracks.<Dots /></div>
+      <div className="processing-txt">Processing your tracks.<Dots /></div>
       <div className="small-txt"><button className="btn-link" onClick={() => pageReset()}>Cancel</button></div>
     </div>)
     byId('status-txt').style.display = 'block'
@@ -331,18 +331,23 @@ function Songhill() {
           <div className="ad-test">Ad will go here.</div>
         </div>}
       </main>
-      <div className="info-box">
-        <p>Use Songhill to separate and isolate song tracks into their individual parts.</p>
-        <p>
-        Songhill is especially useful to musicians, singers, and students who are practicing and learning specific parts of a song.
-        Songhill uses the <a rel="noreferrer" target="_blank" href="https://github.com/deezer/spleeter">Spleeter</a> separation library which attempts to produce the best possible separation for instrumental and vocal parts.
-        </p>
-        <p>
-        Our tool is free and is intended to promote and support the growth of musical learning, practice, and performance. Enjoy!
-        </p>
-      </div>
       <footer>
-        &copy; 2022 songhill.com. <a href={mailto}>Contact us</a>.
+        <div className="info-box">
+          <p>Welcome to <strong className="blue">Songhill</strong>.</p>
+          <p>Use Songhill to separate and isolate song tracks into their individual parts.</p>
+          <p>Songhill is especially useful to musicians, singers, and students who are practicing and learning specific parts of a song.</p>
+          <p>We support three track separation types which result in individual <strong>stems</strong>.</p>
+          <div className="stem-boxes">
+            <p><strong>2 Stems</strong>: <span className="stem-box">vocals</span> <span className="stem-box">accompaniment</span></p>
+            <p><strong>4 Stems</strong>: <span className="stem-box">vocals</span> <span className="stem-box">drums</span> <span className="stem-box">bass</span> <span className="stem-box">other</span></p>
+            <p><strong>5 Stems</strong>: <span className="stem-box">vocals</span> <span className="stem-box">drums</span> <span className="stem-box">bass</span> <span className="stem-box">piano</span> <span className="stem-box">other</span></p>
+          </div>
+          <p>Simply upload your audio file and Songhill will generate your stem files which you may then preview or download.</p>
+          <p>We use the <a rel="noreferrer" target="_blank" href="https://github.com/deezer/spleeter">Spleeter</a> separation library which attempts to produce the best possible isolation of instrumental and vocal parts. Results will vary, of course.</p>
+          <p>Songhill is a free service and is intended to promote and support the growth of musical learning, practice, and performance. Enjoy!</p>
+          { /* <p>Inquiries and questions may be issued <a href={mailto}>here</a>.</p> */ }
+        </div>
+        <div className="copyright">&copy; 2022 songhill.com</div>
       </footer>
     </div>
   )

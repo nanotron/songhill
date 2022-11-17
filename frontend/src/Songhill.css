@@ -5,18 +5,54 @@
 .songhill {
   min-height: 100vh;
   text-align: center;
-  background-color: #161616;
+  background-color: #111;
+  display: flex;
 }
 
 .songhill-main {
-  /* min-height: 100vh; */
+  background-color: #161616;
+  min-width: 50vw;
+  font-size: 2.5em;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.5em;
   color: white;
-  padding: 2em 0 0.5em 0;
+  padding: 2em;
+  border-right: 5px solid #222;
+}
+
+footer {
+  font-size: 1.2em;
+  color: #999;
+  background: #111;
+  padding-bottom: 1em;
+  text-align: left;
+}
+
+footer .info-box {
+  color: #aaa;
+  background: #0c0c0c;
+  margin-bottom: 1em;
+  border-bottom: 5px solid #222;
+  padding: 1.5em;
+}
+
+footer .copyright {
+  padding-left: 1.5em;
+}
+
+.stem-boxes {
+  background: #111;
+  border: 2px solid var(--tron-blue);
+  border-left: 0;
+  border-right: 0;
+  padding: 0 0.5em;
+}
+
+.stem-box {
+  background: #222;
+  color: var(--tron-blue);
+  padding: 1px .25em;
+  border-radius: 0.5em;
 }
 
 .songhill-logo, .songhill-logo-anim {
@@ -37,25 +73,8 @@
   }
 }
 
-.info-box {
-  color: #999;
-  font-size: 1.25em;
-  text-align: left;
-  background: #111;
-  padding: 0.5em 4em;
-  margin-top: 2em;
-  border-top: 5px solid #222;
-  border-bottom: 5px solid #222;
-}
-
-footer {
-  font-size: 1em;
-  color: #999;
-  padding: 1.75em 0.5em;
-}
-
-footer a {
-  color: #ccc;
+.blue {
+  color: var(--tron-blue);
 }
 
 .subtitle {
@@ -68,17 +87,8 @@ p.logo-bubble {
 
 #completed {
   display: none;
-}
-
-#audio_player {
-  display: none;
-  margin: 0.25em auto 0.25em;
-  color: #0ff;
-  border-radius: 50px;
-  border: 4px solid #222;
-  color-scheme: dark;
-  padding: 2px;
-  width: -moz-available;
+  width: 11em;
+  margin: 0 auto;
 }
 
 .small-txt {
@@ -113,25 +123,21 @@ h2.title {
 }
 
 form {
-  margin-bottom: 0;
+  margin: 0 auto;
   text-align: center;
 }
 
 form label {
   display: block;
   font-size: 0.9em;
-  margin: 0 0 0.5em 0;
+  margin: 0 0 0.75em 0;
 }
 
 form h4 {
   font-size: 0.7em;
-  margin: 0 0 0 0;
-  padding: 0.4em 0;
+  margin: 0;
+  padding: 0.25em 0;
   color: #fff;
-
-  /* background: #1c1c1c;
-  border-top-left-radius: 0.5em;
-  border-top-right-radius: 0.5em; */
 }
 
 form select {
@@ -150,6 +156,7 @@ form select, form .field_container {
   border: 0;
   border-top: 3px solid var(--tron-blue);
   background: #2a2a2a;
+  width: 100%;
 }
 
 form select, form input[type='file'] {
@@ -210,9 +217,20 @@ input[type=submit].btn-disabled {
   color: #777;
 }
 
+#audio_player {
+  display: none;
+  margin: 0.25em auto 0.25em auto;
+  color: #0ff;
+  border-radius: 50px;
+  border: 4px solid #222;
+  color-scheme: dark;
+  padding: 2px;
+  width: -moz-available;
+}
+
 .stems {
   font-size: 0.75em;
-  margin: 0.5em 0 1em 0;
+  margin: 0.5em auto 1em auto;
 }
 
 .stem {
@@ -290,18 +308,42 @@ input[type=submit].btn-disabled {
 
 /* Mobile */
 
-@media screen and (max-width:720px) {
+@media screen and (max-width: 720px) {
+  .songhill {
+    display: block;
+  }
   .songhill-main {
+    font-size: 1.5em;
+    padding: 1em 1em 1.5em 1em;
     justify-content: flex-start;
-    font-size: 1.6em;
-    padding-top: 1.5em;
+    align-items: center;
+    justify-content: center;
+    border-right: 0;
   }
   .songhill-logo, .songhill-logo-anim {
     height: 30vmin;
   }
+  footer {
+    font-size: 1em;
+  }
+  footer .info-box {
+    padding: 0.5em 1em;
+    margin-bottom: 1em;
+    border-top: 5px solid #222;
+  }
+  footer .copyright {
+    padding-left: 0;
+    text-align: center;
+  }
+  form {
+    min-width: auto;
+  }
+  .subtitle {
+    font-size: 0.75em;
+  }
   .info-box {
     padding: 0.5em 1em;
-    font-size: 0.8em;
+    font-size: 0.9em;
   }
   .stem {
     font-size: 1.1em;
@@ -311,6 +353,9 @@ input[type=submit].btn-disabled {
   }
   input[type=submit], .btn, footer {
     font-size: 0.8em;
+  }
+  #completed {
+    width: auto;
   }
 }
 
