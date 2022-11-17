@@ -333,7 +333,7 @@ function Songhill() {
       </main>
       <footer>
         <div className="info-box">
-          <p>Welcome to <strong className="blue">Songhill</strong>.</p>
+          <h3>Welcome to <strong className="blue">Songhill</strong>.</h3>
           <p>Use Songhill to separate and isolate song tracks into their individual parts.</p>
           <p>Songhill is especially useful to musicians, singers, and students who are practicing and learning specific parts of a song.</p>
           <p>We support three track separation types which result in individual <strong>stems</strong>.</p>
