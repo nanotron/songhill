@@ -1,42 +1,49 @@
 :root {
   --tron-blue: #0ff;
+  --border-color: #222;
 }
 
 .songhill {
   display: flex;
   min-height: 100vh;
+  margin: 0 auto;
   text-align: center;
-  background-color: #111;
+  background-color: #0f0f0f;
 }
 
 .songhill-main {
   display: flex;
   flex-direction: column;
   background-color: #161616;
-  width: 30em;
-  min-width: 14em;
+  width: 12em;
+  min-width: 15em;
   font-size: 2.5em;
   color: white;
-  padding: 2em;
-  border-right: 5px solid #222;
+  padding: 3em 3% 2em;
+  border-left: 7px solid var(--border-color);
+  border-right: 7px solid var(--border-color);
+  margin-left: 7%;
 }
 
 footer {
   max-width: 50em;
   font-size: 1.2em;
-  color: #999;
-  background: #111;
+  color: #888;
   padding-bottom: 1em;
   text-align: left;
 }
 
 footer .info-box {
-  min-width: 15em;
-  color: #aaa;
-  background: #0c0c0c;
-  margin-bottom: 1em;
-  border-bottom: 5px solid #222;
-  padding: 1.5em;
+  width: 60%;
+  min-width: 20em;
+  color: #bbb;
+  background: #0a0a0a;
+  margin: 0 0 1em 0;
+  border: 7px solid var(--border-color);
+  border-left: 0;
+  border-top: 0;
+  border-bottom-right-radius: 1em;
+  padding: 0.75em 1.75em;
 }
 
 footer .copyright {
@@ -323,21 +330,25 @@ input[type=submit].btn-disabled {
     justify-content: flex-start;
     align-items: center;
     justify-content: center;
-    border-right: 0;
+    border: 0;
+    margin: 0;
   }
   .songhill-logo, .songhill-logo-anim {
     height: 30vmin;
   }
   footer {
     font-size: 1em;
+    padding-bottom: 0;
   }
   footer .info-box {
+    width: auto;
     padding: 0.5em 1em;
-    margin-bottom: 1em;
-    border-top: 5px solid #222;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
   }
   footer .copyright {
-    padding-left: 0;
+    padding: 1em;
     text-align: center;
   }
   form {
