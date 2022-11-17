@@ -92,7 +92,7 @@ function Songhill() {
 
   const showErrorTxt = () => {
     byId('error-txt').style.display = 'block'
-    byId('error-txt').scrollIntoView(true)
+    byId('form-process').scrollIntoView(true)
   }
 
   const showFileSelectError = () => {
