@@ -336,14 +336,14 @@ function Songhill() {
           <h3>Welcome to <strong className="blue">Songhill</strong>.</h3>
           <p>Use Songhill to separate and isolate song tracks into their individual parts.</p>
           <p>Songhill is especially useful to musicians, singers, and students who are practicing and learning specific parts of a song.</p>
-          <p>We support three track separation types which result in individual <strong>stems</strong>.</p>
+          <p>We support three separation types to produce individual <strong>stem</strong> files.</p>
           <div className="stem-boxes">
             <p><strong>2 Stems</strong>: <span className="stem-box">vocals</span> <span className="stem-box">accompaniment</span></p>
             <p><strong>4 Stems</strong>: <span className="stem-box">vocals</span> <span className="stem-box">drums</span> <span className="stem-box">bass</span> <span className="stem-box">other</span></p>
             <p><strong>5 Stems</strong>: <span className="stem-box">vocals</span> <span className="stem-box">drums</span> <span className="stem-box">bass</span> <span className="stem-box">piano</span> <span className="stem-box">other</span></p>
           </div>
           <p>Simply upload your audio file and Songhill will generate your stem files which you may then preview or download.</p>
-          <p>We use the <a rel="noreferrer" target="_blank" href="https://github.com/deezer/spleeter">Spleeter</a> separation library which attempts to produce the best possible isolation of instrumental and vocal parts. Results will vary, of course.</p>
+          <p>We use the <a rel="noreferrer" target="_blank" href="https://github.com/deezer/spleeter">Spleeter</a> separation library which attempts to produce the best possible isolation of instrumental and vocal parts. Results will vary.</p>
           <p>Songhill is a free service and is intended to promote and support the growth of musical learning, practice, and performance. Enjoy!</p>
           { /* <p>Inquiries and questions may be issued <a href={mailto}>here</a>.</p> */ }
         </div>
