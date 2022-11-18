@@ -298,40 +298,37 @@ function Songhill() {
 
   return (
     <div className="songhill">
-      <main className="songhill-main">
-        <h2 className="title">songhill</h2>
-        <div className="subtitle">free audio separation</div>
-        <p className="logo-bubble"><img alt="songhill" id="icon-process" className="songhill-logo" src={logo} /></p>
-        <form onSubmit={(e) => processFile(e)} id="form-process">
-          <label>
-            <h4>Separation Type</h4>
-            <select name="stems" defaultValue="4">
-              <option value="2">2 Stems: Vocals and Accompaniment</option>
-              <option value="4">4 Stems: Vocals, Drums, Bass, Other</option>
-              <option value="5">5 Stems: Vocals, Drums, Bass, Piano, Other</option>
-            </select>
-          </label>
-          <label>
-            <h4>Select Audio File</h4>
-            <div className="field_container">
-              <input name="file" type="file" onChange={(e) => handleFileAdd(e)} />
+      <div className="songhill-main">
+        <div className="actions">
+          <h2 className="title">songhill</h2>
+          <div className="subtitle">free audio separation</div>
+          <p className="logo-bubble"><img alt="songhill" id="icon-process" className="songhill-logo" src={logo} /></p>
+          <form onSubmit={(e) => processFile(e)} id="form-process">
+            <label>
+              <h4>Separation Type</h4>
+              <select name="stems" defaultValue="4">
+                <option value="2">2 Stems: Vocals and Accompaniment</option>
+                <option value="4">4 Stems: Vocals, Drums, Bass, Other</option>
+                <option value="5">5 Stems: Vocals, Drums, Bass, Piano, Other</option>
+              </select>
+            </label>
+            <label>
+              <h4>Select Audio File</h4>
+              <div className="field_container">
+                <input name="file" type="file" onChange={(e) => handleFileAdd(e)} />
+              </div>
+            </label>
+            <div id="submit_container">
+              <input type="submit" id="process_button" disabled={submitBtnDisabled} className="btn-disabled" value="Process Audio" title="Process Audio" />
             </div>
-          </label>
-          <div id="submit_container">
-            <input type="submit" id="process_button" disabled={submitBtnDisabled} className="btn-disabled" value="Process Audio" title="Process Audio" />
+          </form>
+          <div id="error-txt" className="error-txt">{errorTxt}</div>
+          <div id="status-txt">{statusTxt}</div>
+          <div id="completed">
+            <AudioPlayer />
+            {completedMarkup}
           </div>
-        </form>
-        <div id="error-txt" className="error-txt">{errorTxt}</div>
-        <div id="status-txt">{statusTxt}</div>
-        <div id="completed">
-          <AudioPlayer />
-          {completedMarkup}
         </div>
-        { PRODMODE && <div id="ad">
-          <div className="ad-test">Ad will go here.</div>
-        </div>}
-      </main>
-      <footer>
         <div className="info-box">
           <h3>Welcome to <strong className="blue">Songhill</strong>.</h3>
           <p>Use Songhill to separate and isolate song tracks into their individual parts.</p>
@@ -346,9 +343,14 @@ function Songhill() {
           <p>We use the <a rel="noreferrer" target="_blank" href="https://github.com/deezer/spleeter">Spleeter</a> separation library which attempts to produce the best possible isolation of instrumental and vocal parts. Results will vary.</p>
           <p>Songhill is a free service and is intended to promote and support the growth of musical learning, practice, and performance. Enjoy!</p>
           { /* <p>Inquiries and questions may be issued <a href={mailto}>here</a>.</p> */ }
+          { PRODMODE && <div id="ad">
+            <div className="ad-test">Ad will go here.</div>
+          </div>}
+          <footer>
+            <div className="copyright">&copy; 2022 songhill.com</div>
+          </footer>
         </div>
-        <div className="copyright">&copy; 2022 songhill.com</div>
-      </footer>
+      </div>
     </div>
   )
 }

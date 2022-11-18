@@ -4,50 +4,36 @@
 }
 
 .songhill {
-  display: flex;
-  min-height: 100vh;
-  margin: 0 auto;
-  text-align: center;
   background-color: #0f0f0f;
+  min-height: 100vh;
 }
 
 .songhill-main {
   display: flex;
-  flex-direction: column;
-  background-color: #161616;
-  width: 12em;
-  min-width: 15em;
+  align-items: flex-start;
+  justify-content: center;
   font-size: 2.5em;
-  color: white;
-  padding: 3em 3% 2em;
-  border-left: 7px solid var(--border-color);
-  border-right: 7px solid var(--border-color);
-  margin-left: 7%;
+  color: #fff;
 }
 
-footer {
-  max-width: 50em;
-  font-size: 1.2em;
-  color: #888;
-  padding-bottom: 1em;
+.actions {
+  border-left: 5px solid var(--border-color);
+  border-right: 5px solid var(--border-color);
+  text-align: center;
+  background-color: #161616;
+  padding: 2em;
+  min-height: 100vh;
+  min-width: 12em;
+}
+
+.info-box {
+  font-size: 0.5em;
   text-align: left;
-}
-
-footer .info-box {
-  width: 60%;
-  min-width: 20em;
   color: #bbb;
   background: #0a0a0a;
-  margin: 0 0 1em 0;
-  border: 7px solid var(--border-color);
-  border-left: 0;
-  border-top: 0;
-  border-bottom-right-radius: 1em;
-  padding: 0.75em 1.75em;
-}
-
-footer .copyright {
-  padding-left: 1.5em;
+  margin: 0;
+  padding: 0.75em 1.75em 2em 1.75em;
+  width: 22em;
 }
 
 .stem-boxes {
@@ -63,6 +49,18 @@ footer .copyright {
   color: var(--tron-blue);
   padding: 1px .25em;
   border-radius: 0.5em;
+}
+
+footer {
+  font-size: 1em;
+  color: #888;
+  padding-bottom: 1em;
+  text-align: left;
+}
+
+footer .copyright {
+  border-top: 3px solid #222;
+  padding-top: 1em;
 }
 
 .songhill-logo, .songhill-logo-anim {
@@ -323,43 +321,33 @@ input[type=submit].btn-disabled {
     display: block;
   }
   .songhill-main {
-    width: auto;
-    min-width: auto;
+    display: block;
     font-size: 1.5em;
+  }
+  .actions {
+    min-height: auto;
+    min-width: auto;
     padding: 1em 1em 1.5em 1em;
-    justify-content: flex-start;
-    align-items: center;
-    justify-content: center;
     border: 0;
-    margin: 0;
   }
-  .songhill-logo, .songhill-logo-anim {
-    height: 30vmin;
-  }
-  footer {
-    font-size: 1em;
-    padding-bottom: 0;
-  }
-  footer .info-box {
+  .info-box {
+    font-size: 0.7em;
+    padding: 0.25em 0.75em;
     width: auto;
-    padding: 0.5em 1em;
-    margin: 0;
     border: 0;
-    border-radius: 0;
   }
   footer .copyright {
     padding: 1em;
     text-align: center;
+  }
+  .songhill-logo, .songhill-logo-anim {
+    height: 30vmin;
   }
   form {
     min-width: auto;
   }
   .subtitle {
     font-size: 0.75em;
-  }
-  .info-box {
-    padding: 0.5em 1em;
-    font-size: 0.9em;
   }
   .stem {
     font-size: 1.1em;
