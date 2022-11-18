@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import logo from './songhill-logo.webp'
-import play_icon from './play.png'
+import logo from './images/songhill-logo.webp'
+import play_icon from './images/play.png'
 import './Songhill.css'
 
 function Songhill() {
@@ -299,56 +299,60 @@ function Songhill() {
   return (
     <div className="songhill">
       <div className="songhill-main">
-        <div className="actions">
-          <h2 className="title">songhill</h2>
-          <div className="subtitle">free audio separation</div>
-          <p className="logo-bubble"><img alt="songhill" id="icon-process" className="songhill-logo" src={logo} /></p>
-          <form onSubmit={(e) => processFile(e)} id="form-process">
-            <label>
-              <h4>Separation Type</h4>
-              <select name="stems" defaultValue="4">
-                <option value="2">2 Stems: Vocals and Accompaniment</option>
-                <option value="4">4 Stems: Vocals, Drums, Bass, Other</option>
-                <option value="5">5 Stems: Vocals, Drums, Bass, Piano, Other</option>
-              </select>
-            </label>
-            <label>
-              <h4>Select Audio File</h4>
-              <div className="field_container">
-                <input name="file" type="file" onChange={(e) => handleFileAdd(e)} />
+        <div className="actions-wrapper">
+          <div className="actions">
+            <h2 className="title">songhill<div className="cursor_box">_</div></h2>
+            <div className="subtitle">free audio separation</div>
+            <p className="logo-bubble"><img alt="songhill" id="icon-process" className="songhill-logo" src={logo} /></p>
+            <form onSubmit={(e) => processFile(e)} id="form-process">
+              <label>
+                <h4>Separation Type</h4>
+                <select name="stems" defaultValue="4">
+                  <option value="2">2 Stems: Vocals and Accompaniment</option>
+                  <option value="4">4 Stems: Vocals, Drums, Bass, Other</option>
+                  <option value="5">5 Stems: Vocals, Drums, Bass, Piano, Other</option>
+                </select>
+              </label>
+              <label>
+                <h4>Select Audio File</h4>
+                <div className="field_container">
+                  <input name="file" type="file" onChange={(e) => handleFileAdd(e)} />
+                </div>
+              </label>
+              <div id="submit_container">
+                <input type="submit" id="process_button" disabled={submitBtnDisabled} className="btn-disabled" value="Process Audio" title="Process Audio" />
               </div>
-            </label>
-            <div id="submit_container">
-              <input type="submit" id="process_button" disabled={submitBtnDisabled} className="btn-disabled" value="Process Audio" title="Process Audio" />
+            </form>
+            <div id="error-txt" className="error-txt">{errorTxt}</div>
+            <div id="status-txt">{statusTxt}</div>
+            <div id="completed">
+              <AudioPlayer />
+              {completedMarkup}
             </div>
-          </form>
-          <div id="error-txt" className="error-txt">{errorTxt}</div>
-          <div id="status-txt">{statusTxt}</div>
-          <div id="completed">
-            <AudioPlayer />
-            {completedMarkup}
           </div>
         </div>
-        <div className="info-box">
-          <h3>Welcome to <strong className="blue">Songhill</strong>.</h3>
-          <p>Use Songhill to separate and isolate song tracks into their individual parts.</p>
-          <p>Songhill is especially useful to musicians, singers, and students who are practicing and learning specific parts of a song.</p>
-          <p>We support three separation types to produce individual <strong>stem</strong> files.</p>
-          <div className="stem-boxes">
-            <p><strong>2 Stems</strong>: <span className="stem-box">vocals</span> <span className="stem-box">accompaniment</span></p>
-            <p><strong>4 Stems</strong>: <span className="stem-box">vocals</span> <span className="stem-box">drums</span> <span className="stem-box">bass</span> <span className="stem-box">other</span></p>
-            <p><strong>5 Stems</strong>: <span className="stem-box">vocals</span> <span className="stem-box">drums</span> <span className="stem-box">bass</span> <span className="stem-box">piano</span> <span className="stem-box">other</span></p>
+        <div className="info-box-wrapper">
+          <div className="info-box">
+            <h3>Welcome to <strong className="blue">Songhill</strong>.</h3>
+            <p>Use Songhill to separate and isolate song tracks into their individual parts.</p>
+            <p>Songhill is especially useful to musicians, singers, and students who are practicing and learning specific parts of a song.</p>
+            <p>We support three separation types to produce individual <strong>stem</strong> files.</p>
+            <div className="stem-info-boxes">
+              <p><strong>2:</strong> <span className="stem-info-box">vocals</span><span className="stem-info-box">accompaniment</span></p>
+              <p><strong>4:</strong> <span className="stem-info-box">vocals</span><span className="stem-info-box">drums</span><span className="stem-info-box">bass</span><span className="stem-info-box">other</span></p>
+              <p><strong>5:</strong> <span className="stem-info-box">vocals</span><span className="stem-info-box">drums</span><span className="stem-info-box">bass</span><span className="stem-info-box">piano</span><span className="stem-info-box">other</span></p>
+            </div>
+            <p>Simply upload your audio file and Songhill will generate your stem files which you may then preview or download.</p>
+            <p>We use the <a rel="noreferrer" target="_blank" href="https://github.com/deezer/spleeter">Spleeter</a> separation library which attempts to produce the best possible isolation of instrumental and vocal parts. Results will vary.</p>
+            <p>Songhill is a free service and is intended to promote and support the growth of musical learning, practice, and performance. Enjoy!</p>
+            { /* <p>Inquiries and questions may be issued <a href={mailto}>here</a>.</p> */ }
+            { PRODMODE && <div id="ad">
+              <div className="ad-test">Ad will go here.</div>
+            </div>}
+            <footer>
+              <div className="copyright">&copy; 2022 songhill.com</div>
+            </footer>
           </div>
-          <p>Simply upload your audio file and Songhill will generate your stem files which you may then preview or download.</p>
-          <p>We use the <a rel="noreferrer" target="_blank" href="https://github.com/deezer/spleeter">Spleeter</a> separation library which attempts to produce the best possible isolation of instrumental and vocal parts. Results will vary.</p>
-          <p>Songhill is a free service and is intended to promote and support the growth of musical learning, practice, and performance. Enjoy!</p>
-          { /* <p>Inquiries and questions may be issued <a href={mailto}>here</a>.</p> */ }
-          { PRODMODE && <div id="ad">
-            <div className="ad-test">Ad will go here.</div>
-          </div>}
-          <footer>
-            <div className="copyright">&copy; 2022 songhill.com</div>
-          </footer>
         </div>
       </div>
     </div>
