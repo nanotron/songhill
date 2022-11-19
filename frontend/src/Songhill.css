@@ -337,10 +337,9 @@ input[type=submit].btn-disabled {
 .cursor_box {
   animation: blinky 1s linear infinite;
   width: 0.4em;
-  height: 0.41em;
   display: inline-block;
-  vertical-align: bottom;
-  margin-bottom: 1em;
+  position: relative;
+  bottom: 0.1em;
 }
 .cursor:hover {
   cursor: default;
