@@ -9,7 +9,7 @@
 
 .songhill-main {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: center;
   font-size: 2.5em;
   color: #fff;
