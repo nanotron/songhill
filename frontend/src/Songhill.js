@@ -350,7 +350,7 @@ function Songhill() {
               <div className="ad-test">Ad will go here.</div>
             </div>}
             <footer>
-              <div className="copyright">&copy; 2022 songhill.com</div>
+              <div className="copyright">&copy; 2023 songhill.com</div>
             </footer>
           </div>
         </div>
