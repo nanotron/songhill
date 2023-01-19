@@ -335,7 +335,7 @@ function Songhill() {
           <div className="info-box">
             <h3>Welcome to <strong className="blue">Songhill</strong>.</h3>
             <p>Use Songhill to separate and isolate song tracks into their individual instrumental or vocal parts.</p>
-            <p>Musicians, singers, and students may use these isolated tracks to help them practice and learn specific parts of a song. DJs and audio editors may also find these tracks useful.</p>
+            <p>Musicians, singers, and students may use these isolated tracks to help them learn and practice specific parts of a song.</p>
             <p>Three separation types are available to produce individual <strong>stem</strong> files.</p>
             <div className="stem-info-boxes">
               <p><strong>2:</strong> <span className="stem-info-box">vocals</span><span className="stem-info-box">accompaniment</span></p>
