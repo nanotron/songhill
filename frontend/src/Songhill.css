@@ -73,7 +73,7 @@ footer {
 }
 
 footer .copyright {
-  border-top: 3px solid var(--border-color);
+  border-top: 2px solid var(--border-color);
   padding-top: 1em;
 }
 
