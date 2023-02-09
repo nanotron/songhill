@@ -347,7 +347,7 @@ function Songhill() {
             <p>Songhill is a free service and is intended to promote and support the growth of musical learning, practice, and performance. Enjoy!</p>
             { /* <p>Inquiries and questions may be issued <a href={mailto}>here</a>.</p> */ }
             { PRODMODE && <div id="ad">
-            <a href="https://www.buymeacoffee.com/songhill" target="_blank" rel="noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" className="buy-me-a-coffee" /></a>
+            <a href="https://www.buymeacoffee.com/songhill" target="_blank" rel="noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-white.png" alt="Buy Me A Coffee" className="buy-me-a-coffee" /></a>
             </div>}
             <footer>
               <div className="copyright">&copy; 2023 songhill.com</div>
