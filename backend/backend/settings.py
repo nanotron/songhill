@@ -153,6 +153,8 @@ CORS_ORIGIN_WHITELIST = [
   'http://www.songhill.com',
   'https://songhill.com',
   'https://www.songhill.com',
+  'http://songhill.home',
+  'http://songhill.home:3000',
 ]
 
 #CSRF_COOKIE_SECURE = True
