@@ -127,10 +127,8 @@ sudo systemctl enable gunicorn.socket
 sudo systemctl start gunicorn
 sudo systemctl enable gunicorn
 
-or
-
-sudo systemctl daemon-reload
-sudo systemctl restart gunicorn
+To Reload:
+sudo systemctl daemon-reload && sudo systemctl restart gunicorn
 
 # Deploy: Update and restart all services
 
