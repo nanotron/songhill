@@ -66,6 +66,8 @@ sudo usermod -aG www-data emillan
 cd /var/www/
 git clone git@github.com:nanotron/songhill.git
 git config --global --add safe.directory /var/www/songhill
+git config pull.rebase false
+
 sudo chown -R www-data:www-data songhill/
 sudo chmod 775 -R songhill/
 
