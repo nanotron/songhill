@@ -150,8 +150,7 @@ ln -s /etc/systemd/system
 /var/www/songhill/bin/songhill_backup_configs.sh
 
 # Crontab - Every hour.
-> Deletes any files older than 30 minutes.
-
+> Delete any files older than 30 minutes.
 ```
 0 * * * * /usr/bin/python3 $HOME/songhill/backend/songhill/scripts/run_janitor.py
 ```
