@@ -15,7 +15,7 @@ sudo hostnamectl set-hostname songhill
 
 # System Dependencies
 
-sudo apt install vim ufw htop ffmpeg libavcodec-extra zip python3-pip python3-dev libpq-dev nginx virtualenv psmisc rsync tmux curl
+sudo apt install git vim ufw htop ffmpeg libavcodec-extra zip python3-pip python3-dev libpq-dev nginx virtualenv psmisc rsync tmux curl
 
 
 # Node
@@ -60,11 +60,14 @@ sudo usermod -aG sudo emillan
 sudo usermod -aG www-data emillan
 
 # Code
+- Log out and in to make sure the above permissions take.
+- Add ssh-key to Github.
 
 cd /var/www/
 git clone git@github.com:nanotron/songhill.git
-
-- sudo chown -R www-data:www-data songhill/
+git config --global --add safe.directory /var/www/songhill
+sudo chown -R www-data:www-data songhill/
+sudo chmod 775 -R songhill/
 
 # React
 
@@ -75,24 +78,25 @@ npm run build
 # Django
 
 cd songhill/backend
+touch .env
+vim .env
+- Set with `SECRET_KEY={existing value from other instances}`
+
 virtualenv venv -p python3
 source venv/bin/activate
 
 pip install django zipp django-admin backend djangorestframework django-cors-headers pydub spleeter python-magic gunicorn python-decouple psutil
   - or, to reinstall: pip install -I <above packages>
 
-python manage.py migrate
+optional: python manage.py migrate
 python manage.py collectstatic
 
-NOTE: `songhill/backend/.env` file will need to be added manually with the appropriate `SECRET_KEY=` value.
-
-# .env Config
-
-Add .env manually to `songhill/backend/`.
 
 # Nginx
 
-sudo cp /var/www/songhill/etc/nginx/nginx.conf /etc/nginx/sites-available/
+NOTE: use songill.home for local version.
+
+sudo cp /var/www/songhill/etc/nginx/songhill.com /etc/nginx/sites-available/
 sudo systemctl start nginx
 sudo systemctl enable nginx
 
@@ -111,7 +115,6 @@ sudo certbot renew --dry-run
 
 sudo mkdir -pv /var/{log,run}/gunicorn/
 sudo chown -cR www-data:www-data /var/{log,run}/gunicorn/
-
 sudo cp /var/www/songhill/etc/gunicorn/gunicorn.s* /etc/systemd/system/
 sudo systemctl start gunicorn.socket
 sudo systemctl enable gunicorn.socket
@@ -125,15 +128,22 @@ sudo systemctl restart gunicorn
 
 # Deploy: Update and restart all services
 
-songhill/bin/songhill_deploy.sh
+/var/www/songhill/bin/songhill_deploy.sh
 
 # Restart nginx and gunicorn only
 
-songhill/bin/songhill_restart_services.sh
+/var/www/songhill/bin/songhill_restart_services.sh
+
+# Symlinks
+
+cd
+ln -s /etc/nginx/sites-enabled
+ln -s /var/www/songhill
+ln -s /etc/systemd/system
 
 # Backup existing nginx and gunicorn etc configs
 
-songhill/bin/songhill_backup_configs.sh
+/var/www/songhill/bin/songhill_backup_configs.sh
 
 # Crontab - Every hour.
 > Deletes any files older than 30 minutes.
