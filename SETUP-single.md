@@ -97,6 +97,10 @@ python manage.py collectstatic
 NOTE: use songill.home for local version.
 
 sudo cp /var/www/songhill/etc/nginx/songhill.com /etc/nginx/sites-available/
+  - sudo cp /var/www/songhill/etc/nginx/songhill.home /etc/nginx/sites-available/
+cd /etc/nginx/sites-enabled/
+sudo ln -s ../sites-available/songhill.home
+
 sudo systemctl start nginx
 sudo systemctl enable nginx
 
