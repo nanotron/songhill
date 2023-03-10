@@ -38,6 +38,7 @@ ALLOWED_HOSTS = [
     'songhill.com',
     '.songhill.com',
     'songhill.home',
+    'nanotron.net',
 ]
 
 # Application definition
@@ -156,6 +157,8 @@ CORS_ORIGIN_WHITELIST = [
   'https://www.songhill.com',
   'http://songhill.home',
   'http://songhill.home:3000',
+  'http://songhill.nanotron.net',
+  'http://songhill.nanotron.net:3000',
 ]
 
 #CSRF_COOKIE_SECURE = True
