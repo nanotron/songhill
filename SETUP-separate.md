@@ -22,14 +22,14 @@ Debian Linux 11 Bullseye
 
 sudo hostnamectl set-hostname songhill
 
+# System Dependencies
+
+sudo apt install vim ufw htop ffmpeg libavcodec-extra zip python3-pip python3-dev libpq-dev nginx virtualenv psmisc rsync tmux curl
+
 # Node
 
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt install nodejs
-
-# System Dependencies
-
-sudo apt install vim ufw htop ffmpeg libavcodec-extra zip python3-pip python3-dev libpq-dev nginx virtualenv psmisc rsync tmux curl
 
 # Firewall
 
