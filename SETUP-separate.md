@@ -1,26 +1,35 @@
-# Current Production Server
+# Separate Servers:
+#
+# React served by nginx on Linode.
+# Django served by nginx and gunicorn self-hosted.
 
-8GB RAM Linode 
-4 CPU Cores
-160 GB Storage
+####################################
+# Linode Server for React Frontend #
+####################################
+
+
+
+###########################################
+# Self-Hosted KVM Guest Server for Django #
+###########################################
+
+64GB RAM KVM Guest on Palpatine 
+8 CPU Cores
+256 GB Storage
 Debian Linux 11 Bullseye
-
 
 # Hostname
 
 sudo hostnamectl set-hostname songhill
-
 
 # Node
 
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt install nodejs
 
-
 # System Dependencies
 
 sudo apt install vim ufw htop ffmpeg libavcodec-extra zip python3-pip python3-dev libpq-dev nginx virtualenv psmisc rsync tmux curl
-
 
 # Firewall
 
@@ -58,7 +67,6 @@ sudo chmod -R 775 /var/www/
 sudo usermod -aG sudo emillan
 sudo usermod -aG www-data emillan
 
-
 # Code
 
 cd /var/www/
@@ -66,13 +74,11 @@ git clone git@github.com:nanotron/songhill.git
 
 - sudo chown -R www-data:www-data songhill/
 
-
 # React
 
 cd songhill/frontend
 npm i
 npm run build
-
 
 # Django
 
@@ -88,18 +94,15 @@ python manage.py collectstatic
 
 NOTE: `songhill/backend/.env` file will need to be added manually with the appropriate `SECRET_KEY=` value.
 
-
 # .env Config
 
 Add .env manually to `songhill/backend/`.
-
 
 # Nginx
 
 sudo cp /var/www/songhill/etc/nginx/nginx.conf /etc/nginx/sites-available/
 sudo systemctl start nginx
 sudo systemctl enable nginx
-
 
 # Nginx - SSL Certificate
 
@@ -111,7 +114,6 @@ sudo systemctl status certbot.timer
 
 > To test dry-run of renewal process:
 sudo certbot renew --dry-run
-
 
 # Gunicorn
 
@@ -129,21 +131,17 @@ or
 sudo systemctl daemon-reload
 sudo systemctl restart gunicorn
 
-
 # Deploy: Update and restart all services
 
 songhill/bin/songhill_deploy.sh
-
 
 # Restart nginx and gunicorn only
 
 songhill/bin/songhill_restart_services.sh
 
-
 # Backup existing nginx and gunicorn etc configs
 
 songhill/bin/songhill_backup_configs.sh
-
 
 # Crontab - Every hour.
 > Deletes any files older than 30 minutes.
@@ -164,7 +162,6 @@ deactivate
 rm -rf songhill/backend/venv
 rm -rf ~/.cache/pip
 < reinstall django pip packages>
-
 
 # References
 
