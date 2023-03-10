@@ -36,7 +36,8 @@ ALLOWED_HOSTS = [
     'localhost',
     'songhill',
     'songhill.com',
-    '.songhill.com'
+    '.songhill.com',
+    'songhill.home',
 ]
 
 # Application definition
