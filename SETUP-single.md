@@ -15,10 +15,13 @@ sudo hostnamectl set-hostname songhill
 
 # System Dependencies
 
-sudo apt install git vim ufw htop ffmpeg libavcodec-extra zip python3-pip python3-dev libpq-dev nginx virtualenv psmisc rsync tmux curl
+sudo apt install git vim ufw htop nginx tmux curl ripgrep rsync
 
+# System Dependencies - Backend Only
 
-# Node
+sudo apt install ffmpeg libavcodec-extra zip python3-pip python3-dev libpq-dev virtualenv psmisc
+
+# Node - Frontend
 
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt install nodejs
@@ -93,13 +96,11 @@ pip install django zipp django-admin backend djangorestframework django-cors-hea
 optional: python manage.py migrate
 python manage.py collectstatic
 
-
 # Nginx
 
-NOTE: use songill.home for local version.
+songhill.com: sudo cp /var/www/songhill/etc/nginx/songhill.com /etc/nginx/sites-available/
+songhill.home: sudo cp /var/www/songhill/etc/nginx/songhill.home /etc/nginx/sites-available/
 
-sudo cp /var/www/songhill/etc/nginx/songhill.com /etc/nginx/sites-available/
-  - sudo cp /var/www/songhill/etc/nginx/songhill.home /etc/nginx/sites-available/
 cd /etc/nginx/sites-enabled/
 sudo ln -s ../sites-available/songhill.home
 
