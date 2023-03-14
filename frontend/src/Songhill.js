@@ -242,7 +242,8 @@ function Songhill() {
       // Upload file.
       axios.post(`${API_PATH}/process/`, formData, {
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Authorization',
+          'Access-Control-Allow-Origin': 'https://spleeter.org',
           'content-type': 'multipart/form-data',
           'X-CSRFToken': csrftoken
         }
