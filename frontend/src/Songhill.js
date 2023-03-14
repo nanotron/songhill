@@ -237,6 +237,7 @@ function Songhill() {
       formData.append('type', e.target[0].value)
       formData.append('file', e.target[1].files[0])
       formData.append('uuid', uuid)
+      formData.append('csrfmiddlewaretoken', csrftoken)
       formData.append('Accept', STEM_TYPE)
 
       // Upload file.
@@ -306,7 +307,6 @@ function Songhill() {
             <div className="subtitle">free audio separation</div>
             <p className="logo-bubble"><img alt="songhill" id="icon-process" className="songhill-logo" src={logo} /></p>
             <form onSubmit={(e) => processFile(e)} id="form-process">
-              <input name="csrfmiddlewaretoken" value={csrftoken} type="hidden" />
               <label>
                 <h4>Separation Type</h4>
                 <select name="stems" defaultValue="4">
