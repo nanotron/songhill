@@ -323,6 +323,7 @@ function Songhill() {
                   <input name="file" type="file" onChange={(e) => handleFileAdd(e)} />
                 </div>
               </label>
+              <input type="hidden" name="csrfmiddlewaretoken" value="{csrftoken}" />
               <div id="submit_container">
                 <input type="submit" id="process_button" disabled={submitBtnDisabled} className="btn-disabled" value="Process Audio" title="Process Audio" />
               </div>
