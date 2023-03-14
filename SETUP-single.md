@@ -82,6 +82,8 @@ npm run build
 
 # React - Set API Path
 
+NOTE: If using a remote django HTTPS must be used by the referrer.
+
 If using remote API:
 
 touch /var/www/songhill/frontend/.env
