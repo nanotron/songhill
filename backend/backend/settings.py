@@ -142,7 +142,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = False
-CORS_ALLOWED_ORIGINS = [
+CORS_ALLOWED_ORIGIN_REGEXES = [
   r"^http://\w+\.spleeter\.org$",
   r"^https://\w+\.songhill\.com$",
 ]
