@@ -151,10 +151,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CSRF #
 ########
 
-# CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 # CSRF_COOKIE_HTTPONLY = True
-CSRF_COOKIE_SAMESITE = 'Lax'
-# CSRF_COOKIE_HTTPONLY = True
+# CSRF_COOKIE_SAMESITE = 'Lax'
 CSRF_TRUSTED_ORIGINS = [
   'https://songhill.com',
   'https://www.songhill.com',
