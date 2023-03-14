@@ -245,7 +245,7 @@ function Songhill() {
         headers: {
           'content-type': 'multipart/form-data',
           'X-CSRFToken': csrftoken,
-          'Access-Control-Allow-Origin': 'https://spleeter.org'
+          'Access-Control-Allow-Origin': '*'
         }
       })
       .then((response) => {
