@@ -9,6 +9,15 @@
 160 GB Storage
 Debian Linux 11 Bullseye
 
+# Self-Hosted KVM Guest Server for Django as of March 2023
+
+64GB RAM KVM Guest on Palpatine 
+8 CPU Cores
+256 GB Storage
+Debian Linux 11 Bullseye
+
+####################################################################################
+
 # Hostname
 
 sudo hostnamectl set-hostname songhill
