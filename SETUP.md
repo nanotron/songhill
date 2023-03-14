@@ -41,6 +41,9 @@ sudo ufw enable
 sudo ufw allow "WWW"
 sudo ufw allow "WWW Secure"
 
+For songhill.home:
+sudo ufw allow 8008
+
 > sudo ufw status
 
 ```
