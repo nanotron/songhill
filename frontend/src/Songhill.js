@@ -237,7 +237,6 @@ function Songhill() {
       formData.append('type', e.target[0].value)
       formData.append('file', e.target[1].files[0])
       formData.append('uuid', uuid)
-      formData.append('csrfmiddlewaretoken', csrftoken)
       formData.append('Accept', STEM_TYPE)
 
       // Upload file.
