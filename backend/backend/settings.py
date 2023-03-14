@@ -177,8 +177,8 @@ CORS_ALLOWED_ORIGINS = [
 #CSRF_COOKIE_HTTPONLY = True
 
 CSRF_TRUSTED_ORIGINS = [
-  'https://*.songhill.com',
-  'https://*.spleeter.org',
-  'https://*.songhill.home',
-  'https://*.nanotron.net'
+  'https://songhill.com',
+  'https://spleeter.org',
+  'https://songhill.home',
+  'https://nanotron.net'
 ]
