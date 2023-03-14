@@ -178,7 +178,11 @@ CORS_ALLOWED_ORIGINS = [
 
 CSRF_TRUSTED_ORIGINS = [
   'https://songhill.com',
+  'https://www.songhill.com',
   'https://spleeter.org',
+  'https://www.spleeter.org',
   'https://songhill.home',
+  'https://www.songhill.home',
   'https://nanotron.net'
+  'https://songhill.nanotron.net'
 ]

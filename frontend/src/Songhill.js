@@ -37,6 +37,8 @@ function Songhill() {
     return document.getElementById(id)
   }
 
+  const tokenCookie = document.cookie.replace(/(?:(?:^|.*;\s*)csrftoken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
   const Dots = () => {
     return (<span className="dots">
       <span>.</span><span>.</span><span>.</span>
@@ -306,6 +308,7 @@ function Songhill() {
             <div className="subtitle">free audio separation</div>
             <p className="logo-bubble"><img alt="songhill" id="icon-process" className="songhill-logo" src={logo} /></p>
             <form onSubmit={(e) => processFile(e)} id="form-process">
+              <input name="csrfmiddlewaretoken" value={csrftoken} type="hidden" />
               <label>
                 <h4>Separation Type</h4>
                 <select name="stems" defaultValue="4">
