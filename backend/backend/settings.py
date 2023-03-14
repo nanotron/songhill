@@ -40,6 +40,8 @@ ALLOWED_HOSTS = [
     'songhill.home',
     'nanotron.net',
     '.nanotron.net',
+    'spleeter.org',
+    '.spleeter.org',
 ]
 
 # Application definition
