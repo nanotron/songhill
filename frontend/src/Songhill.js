@@ -240,12 +240,13 @@ function Songhill() {
       // formData.append('csrfmiddlewaretoken', csrftoken)
       formData.append('Accept', STEM_TYPE)
 
+      console.log('csrftoken', csrftoken);
+
       // Upload file.
       axios.post(`${API_PATH}/process/`, formData, {
         headers: {
           'content-type': 'multipart/form-data',
-          'X-CSRFToken': csrftoken,
-          'Access-Control-Allow-Origin': '*'
+          'X-CSRFToken': csrftoken
         }
       })
       .then((response) => {
