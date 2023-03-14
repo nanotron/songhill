@@ -1,20 +1,19 @@
-# Single Server:
-#
-# Django and React served together on Linode via nginx with gunicorn.
-
 # Original Production Server prior to March 2023.
+  - Django and React served together on Linode via nginx with gunicorn.
 
-8GB RAM Linode 
-4 CPU Cores
-160 GB Storage
-Debian Linux 11 Bullseye
+  8GB RAM Linode 
+  4 CPU Cores
+  160 GB Storage
+  Debian Linux 11 Bullseye
 
 # Self-Hosted KVM Guest Server for Django as of March 2023
+  - Frontend: React served on Linode (nanotron.net) via nginx with gunicorn.
+  - Server: songhill.home/songhill.nanotron.net: Django nginx with gunicorn.
 
-64GB RAM KVM Guest on Palpatine 
-8 CPU Cores
-256 GB Storage
-Debian Linux 11 Bullseye
+  64GB RAM KVM Guest on Palpatine 
+  8 CPU Cores
+  256 GB Storage
+  Debian Linux 11 Bullseye
 
 ####################################################################################
 
