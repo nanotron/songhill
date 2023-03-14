@@ -243,6 +243,7 @@ function Songhill() {
       axios.post(`${API_PATH}/process/`, formData, {
         headers: {
           'credentials': 'include',
+          'Access-Control-Allow-Origin': 'https://spleeter.org',
           'content-type': 'multipart/form-data',
           'X-CSRFToken': csrftoken
         }
