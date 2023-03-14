@@ -126,7 +126,6 @@ def handle_processing_exception(error, file_in, audio_output_dir):
   gc.collect()
   return JsonResponse({'error': str(error)})
 
-@csrf_exempt
 @require_http_methods(['POST'])
 def process(request):
   if request.method == 'POST':
