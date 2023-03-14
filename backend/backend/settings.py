@@ -40,6 +40,7 @@ ALLOWED_HOSTS = [
     'songhill.home',
     'nanotron.net',
     '.nanotron.net',
+    'songhill.nanotron.net',
     'spleeter.org',
     '.spleeter.org',
 ]
