@@ -30,7 +30,8 @@ function Songhill() {
     PRODMODE = false
   }
 
-  const API_PATH = PRODMODE ? '/api' : ''
+  const API_PATH_SET = process.env.API_PATH ? process.env.API_PATH : '/api';
+  const API_PATH = PRODMODE ? API_PATH_SET : '';
 
   const byId = (id) => {
     return document.getElementById(id)

@@ -80,6 +80,16 @@ cd songhill/frontend
 npm i
 npm run build
 
+# React - Set API Path
+
+If using remote API:
+
+touch /var/www/songhill/frontend/.env
+
+```
+API_PATH=http://songhill.nanotron.net/api
+```
+
 # Django
 
 cd songhill/backend
