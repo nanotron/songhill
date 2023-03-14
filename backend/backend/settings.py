@@ -145,13 +145,44 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+#SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
+########
+# CSRF #
+########
+
+#CSRF_COOKIE_SECURE = True
+#CSRF_COOKIE_HTTPONLY = True
+
+CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_HTTPONLY = True
+CSRF_TRUSTED_ORIGINS = [
+  'https://songhill.com',
+  'https://www.songhill.com',
+  'https://spleeter.org',
+  'https://www.spleeter.org',
+  'https://songhill.home',
+  'https://www.songhill.home',
+  'https://nanotron.net'
+  'https://songhill.nanotron.net'
+]
+
+########
+# CORS #
+########
+
 # https://github.com/adamchainz/django-cors-headers
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ALLOW_CREDENTIALS = False
-# CORS_ALLOWED_ORIGIN_REGEXES = [
-#   r"^http://\w+\.spleeter\.org$",
-#   r"^https://\w+\.songhill\.com$",
-# ]
+
+CORS_ALLOW_HEADERS = [
+    "content-type",
+    "X-CSRFToken"
+]
+CORS_EXPOSE_HEADERS =[
+    "content-type",
+    "X-CSRFToken"
+]
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
   'http://0.0.0.0',
   'http://localhost',
@@ -170,19 +201,9 @@ CORS_ALLOWED_ORIGINS = [
   'https://spleeter.org',
   'https://www.spleeter.org'
 ]
+# CORS_ALLOWED_ORIGIN_REGEXES = [
+#   r"^http://\w+\.spleeter\.org$",
+#   r"^https://\w+\.songhill\.com$",
+# ]
 
-#SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
-#CSRF_COOKIE_SECURE = True
-#CSRF_COOKIE_HTTPONLY = True
-
-CSRF_TRUSTED_ORIGINS = [
-  'https://songhill.com',
-  'https://www.songhill.com',
-  'https://spleeter.org',
-  'https://www.spleeter.org',
-  'https://songhill.home',
-  'https://www.songhill.home',
-  'https://nanotron.net'
-  'https://songhill.nanotron.net'
-]
