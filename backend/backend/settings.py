@@ -164,10 +164,8 @@ CORS_ALLOWED_ORIGINS = [
   'http://www.songhill.com',
   'https://songhill.com',
   'https://www.songhill.com',
-  'http://songhill.home',
-  'http://songhill.home:3000',
-  'http://songhill.nanotron.net',
-  'http://songhill.nanotron.net:3000',
+  'https://songhill.home',
+  'https://songhill.nanotron.net',
   'https://spleeter.org',
   'https://www.spleeter.org'
 ]
