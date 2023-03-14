@@ -151,11 +151,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CSRF #
 ########
 
-#CSRF_COOKIE_SECURE = True
-#CSRF_COOKIE_HTTPONLY = True
+# CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_HTTPONLY = True
+# CSRF_COOKIE_SAMESITE = 'Lax'
+# CSRF_COOKIE_HTTPONLY = True
 
-CSRF_COOKIE_SAMESITE = 'Lax'
-CSRF_COOKIE_HTTPONLY = True
 CSRF_TRUSTED_ORIGINS = [
   'https://songhill.com',
   'https://www.songhill.com',
@@ -173,16 +173,16 @@ CSRF_TRUSTED_ORIGINS = [
 
 # https://github.com/adamchainz/django-cors-headers
 
-CORS_ALLOW_HEADERS = [
-    "content-type",
-    "X-CSRFToken"
-]
-CORS_EXPOSE_HEADERS =[
-    "content-type",
-    "X-CSRFToken"
-]
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_HEADERS = [
+#     "content-type",
+#     "X-CSRFToken"
+# ]
+# CORS_EXPOSE_HEADERS =[
+#     "content-type",
+#     "X-CSRFToken"
+# ]
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
   'http://0.0.0.0',
   'http://localhost',
@@ -205,5 +205,3 @@ CORS_ALLOWED_ORIGINS = [
 #   r"^http://\w+\.spleeter\.org$",
 #   r"^https://\w+\.songhill\.com$",
 # ]
-
-
