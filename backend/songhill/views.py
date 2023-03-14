@@ -127,7 +127,6 @@ def handle_processing_exception(error, file_in, audio_output_dir):
   return JsonResponse({'error': str(error)})
 
 @require_http_methods(['POST'])
-@csrf_exempt
 def process(request):
   if request.method == 'POST':
     spleeting_complete = False

@@ -241,6 +241,8 @@ function Songhill() {
 
       // Upload file.
       axios.post(`${API_PATH}/process/`, formData, {
+        credentials: 'include',
+        mode: 'same-origin',
         headers: {
           'content-type': 'multipart/form-data',
           'X-CSRFToken': csrftoken
