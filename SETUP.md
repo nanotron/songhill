@@ -150,7 +150,7 @@ apache: sudo apt install certbot python3-certbot-apache
 
 linode (apache): sudo certbot --apache -d songhill.com -d www.songhill.com
 linode (nginx): sudo certbot --nginx -d songhill.com -d www.songhill.com
-local (nginx): sudo certbot --nginx -d songhill.home -d songhill.nanotron.net
+?Not working: local (nginx): sudo certbot --nginx -d songhill.nanotron.net
 
 > Check status of certbot renewal:
 sudo systemctl status certbot.timer
