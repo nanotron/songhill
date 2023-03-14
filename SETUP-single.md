@@ -85,9 +85,12 @@ npm run build
 If using remote API:
 
 touch /var/www/songhill/frontend/.env
-
 ```
-API_PATH=http://songhill.nanotron.net/api
+REACT_APP_API_PATH=http://songhill.nanotron.net:8008/api
+```
+or
+```
+REACT_APP_API_PATH=http://localhost:8008/api
 ```
 
 # Django
