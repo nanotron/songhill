@@ -165,8 +165,8 @@ CORS_ALLOWED_ORIGINS = [
   'http://songhill.home:3000',
   'http://songhill.nanotron.net',
   'http://songhill.nanotron.net:3000',
-  'http://spleeter.org',
-  'http://www.spleeter.org'
+  'https://spleeter.org',
+  'https://www.spleeter.org'
 ]
 
 #CSRF_COOKIE_SECURE = True
