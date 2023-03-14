@@ -37,8 +37,6 @@ function Songhill() {
     return document.getElementById(id)
   }
 
-  const tokenCookie = document.cookie.replace(/(?:(?:^|.*;\s*)csrftoken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-
   const Dots = () => {
     return (<span className="dots">
       <span>.</span><span>.</span><span>.</span>
