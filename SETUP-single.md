@@ -125,6 +125,12 @@ sudo systemctl enable nginx
 sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx -d songhill.com -d www.songhill.com
 
+# Nginx - Apache Certificate
+
+sudo apt install certbot python3-certbot-apache
+sudo certbot --apache -d songhill.com -d www.songhill.com
+
+
 > Check status of certbot renewal:
 sudo systemctl status certbot.timer
 
