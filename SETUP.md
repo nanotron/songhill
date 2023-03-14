@@ -99,11 +99,11 @@ If using remote API:
 
 touch /var/www/songhill/frontend/.env
 ```
-REACT_APP_API_PATH=http://songhill.nanotron.net:8008/api
+REACT_APP_API_PATH=https://songhill.nanotron.net/api
 ```
 or
 ```
-REACT_APP_API_PATH=http://localhost:8008/api
+REACT_APP_API_PATH=https://localhost/api
 ```
 
 # Django
@@ -150,7 +150,9 @@ apache: sudo apt install certbot python3-certbot-apache
 
 linode (apache): sudo certbot --apache -d songhill.com -d www.songhill.com
 linode (nginx): sudo certbot --nginx -d songhill.com -d www.songhill.com
-?Not working: local (nginx): sudo certbot --nginx -d songhill.nanotron.net
+
+local (nginx): sudo certbot --nginx -d songhill.nanotron.net
+Note: Open port 80 and send it to songhill.home first so certbot can connect.
 
 > Check status of certbot renewal:
 sudo systemctl status certbot.timer
