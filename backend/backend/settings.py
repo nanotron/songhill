@@ -39,6 +39,7 @@ ALLOWED_HOSTS = [
     '.songhill.com',
     'songhill.home',
     'nanotron.net',
+    '.nanotron.net',
 ]
 
 # Application definition
