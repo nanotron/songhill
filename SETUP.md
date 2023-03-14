@@ -130,16 +130,24 @@ sudo ln -s ../sites-available/songhill.home
 sudo systemctl start nginx
 sudo systemctl enable nginx
 
-# Nginx - SSL Certificate
+# Apache
 
-sudo apt install certbot python3-certbot-nginx
-sudo certbot --nginx -d songhill.com -d www.songhill.com
+spleeter.org: sudo cp /var/www/songhill/etc/apache/spleeter.org /etc/apache/sites-available/
 
-# Nginx - Apache Certificate
+cd /etc/apache/sites-enabled/
+sudo ln -s ../sites-available/spleeter.org
 
-sudo apt install certbot python3-certbot-apache
-sudo certbot --apache -d songhill.com -d www.songhill.com
+sudo systemctl start apache2
+sudo systemctl enable apache2
 
+# SSL Certificate - Nginx or Apache
+
+nginx: sudo apt install certbot python3-certbot-nginx
+apache: sudo apt install certbot python3-certbot-apache
+
+linode (apache): sudo certbot --apache -d songhill.com -d www.songhill.com
+linode (nginx): sudo certbot --nginx -d songhill.com -d www.songhill.com
+local (nginx): sudo certbot --nginx -d songhill.home -d songhill.nanotron.net
 
 > Check status of certbot renewal:
 sudo systemctl status certbot.timer
