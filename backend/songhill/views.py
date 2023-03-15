@@ -229,6 +229,7 @@ def zip(request):
   return return_file(zip_filename, "application/zip")
 
 # Remove any session files.
+@csrf_exempt
 @require_http_methods(['POST'])
 def purge(request):
   if request.method == 'POST':
