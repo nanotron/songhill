@@ -29,6 +29,7 @@ function Songhill() {
   if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
     PRODMODE = false;
   }
+  const SHOW_ADS = document.location.hostname.includes('songhill.com');
 
   const API_PATH_SET = process.env.REACT_APP_API_PATH ? process.env.REACT_APP_API_PATH : '/api';
   const API_PATH = PRODMODE ? API_PATH_SET : '';
@@ -349,7 +350,7 @@ function Songhill() {
             <p>We use the <a rel="noreferrer" target="_blank" href="https://github.com/deezer/spleeter">Spleeter</a> separation library which attempts to produce the best possible isolation of instrumental and vocal parts. Results will vary.</p>
             <p>Songhill is a free service and is intended to promote and support the growth of musical learning, practice, and performance. Enjoy!</p>
             { /* <p>Inquiries and questions may be issued <a href={mailto}>here</a>.</p> */ }
-            { PRODMODE && <div id="ad">
+            { SHOW_ADS && <div id="ad">
             <a href="https://www.buymeacoffee.com/songhill" target="_blank" rel="noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-white.png" alt="Buy Me A Coffee" className="buy-me-a-coffee" /></a>
             </div>}
             <footer>
