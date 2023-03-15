@@ -220,7 +220,7 @@ function Songhill() {
     window.scroll(0,0);
     setStatusTxt(<div>
       <div className="processing-txt">Now processing <div>your audio tracks.<Dots /></div></div>
-      <div className="small-txt"><button className="btn-link" onClick={() => pageReset()}>Cancel Processing</button></div>
+      <div className="small-txt"><button className="btn-link" onClick={() => pageReset(true)}>Cancel Processing</button></div>
     </div>);
     byId('status-txt').style.display = 'block';
     byId('icon-process').className = 'songhill-logo-anim';
@@ -266,8 +266,9 @@ function Songhill() {
     })
   }
 
-  const pageReset = () => {
+  const pageReset = (force = false) => {
     if (window.confirm(leaveConfirmTxt)) {
+      force && setStatusTxt(<div className="processing-txt">Cancelling.<Dots /></div>);
       pageResetConfirmed();
     } else {
       return;
