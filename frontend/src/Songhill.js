@@ -238,7 +238,6 @@ function Songhill() {
       formData.append('file', e.target[1].files[0]);
       formData.append('uuid', uuid);
       formData.append('Accept', STEM_TYPE);
-      formData.append('csrfmiddlewaretoken', csrftoken);
 
       // Upload file.
       axios.post(`${API_PATH}/process/`, formData, {
@@ -280,7 +279,6 @@ function Songhill() {
     const formData = new FormData();
     formData.append('dirname', fileData.dirname);
     formData.append('uuid', uuid);
-    formData.append('csrfmiddlewaretoken', csrftoken);
 
     axios.post(`${API_PATH}/purge/`, formData, {
       headers: {
