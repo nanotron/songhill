@@ -287,14 +287,17 @@ function Songhill() {
       }
     })
     .then((response) => {
-      if (callback && response?.status === 'cleaned') {
-        callback()
+      if (callback && response?.headers?.status === 'cleaned') {
+        callback();
+      } else {
+        window.onbeforeunload = () => {};
+        window.location.reload();
       }
     })
     .catch(function (error) {
       console.log(error.toJSON())
-      window.onbeforeunload = () => {}
-      window.location.reload()
+      window.onbeforeunload = () => {};
+      window.location.reload();
     });
   }
 
