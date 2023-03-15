@@ -127,71 +127,71 @@ def handle_processing_exception(error, file_in, audio_output_dir):
   return JsonResponse({'error': str(error)})
 
 @csrf_exempt
-  @require_http_methods(['POST'])
-  def process(request):
-    if request.method == 'POST':
-      spleeting_complete = False
-      status_text = ''
-      uuid = request.POST.get('uuid')
-      stem_type = request.POST.get('type')
-      audio_file = request.FILES['file']
-      file_name_orig = audio_file.name
-      file_name = process_file_name(file_name_orig, uuid)
-      file_full_path = file_in_dir+file_name
+@require_http_methods(['POST'])
+def process(request):
+  if request.method == 'POST':
+    spleeting_complete = False
+    status_text = ''
+    uuid = request.POST.get('uuid')
+    stem_type = request.POST.get('type')
+    audio_file = request.FILES['file']
+    file_name_orig = audio_file.name
+    file_name = process_file_name(file_name_orig, uuid)
+    file_full_path = file_in_dir+file_name
 
-      # Save uploaded file.
-      if os.path.exists(file_full_path):
-        os.remove(file_full_path)
-      default_storage.save(file_full_path, audio_file)
-      file_in = file_full_path
-      file_name_no_ext = os.path.splitext(file_name)[0]
-      audio_output_dir = f'{file_out_dir}{file_name_no_ext}'
+    # Save uploaded file.
+    if os.path.exists(file_full_path):
+      os.remove(file_full_path)
+    default_storage.save(file_full_path, audio_file)
+    file_in = file_full_path
+    file_name_no_ext = os.path.splitext(file_name)[0]
+    audio_output_dir = f'{file_out_dir}{file_name_no_ext}'
 
-      # Process audio and save stems.
-      myLogger('Waiting on CPU')
-      thread = threading.Thread(target=wait_for_cpu)
-      thread.start()
-      cpu_mem_available.wait()
+    # Process audio and save stems.
+    myLogger('Waiting on CPU')
+    thread = threading.Thread(target=wait_for_cpu)
+    thread.start()
+    cpu_mem_available.wait()
 
-      try:
-        file_valid = is_file_valid(file_in)
-        if file_valid:
-          myLogger('Spleeting begins')
-          Separator(f'spleeter:{stem_type}stems').separate_to_file(file_in, file_out_dir)
-          spleeting_complete = True
-      except Exception as error:
-        handle_processing_exception(error, file_in, audio_output_dir)
+    try:
+      file_valid = is_file_valid(file_in)
+      if file_valid:
+        myLogger('Spleeting begins')
+        Separator(f'spleeter:{stem_type}stems').separate_to_file(file_in, file_out_dir)
+        spleeting_complete = True
+    except Exception as error:
+      handle_processing_exception(error, file_in, audio_output_dir)
 
-      # Convert wav files to mp3.
-      try:
-        if CONVERT_TO_MP3 and spleeting_complete and os.path.exists(audio_output_dir):
-          wav_files = glob.glob(f'{audio_output_dir}/*.wav')
-          for wav_file in wav_files:
-            if os.path.exists(wav_file):
-              stem_file = f"{wav_file.replace('.wav','')}.{STEM_EXT}"
-              AudioSegment.from_wav(wav_file).export(stem_file, format=STEM_EXT)
-              if os.path.exists(stem_file):
-                os.remove(wav_file)
+    # Convert wav files to mp3.
+    try:
+      if CONVERT_TO_MP3 and spleeting_complete and os.path.exists(audio_output_dir):
+        wav_files = glob.glob(f'{audio_output_dir}/*.wav')
+        for wav_file in wav_files:
+          if os.path.exists(wav_file):
+            stem_file = f"{wav_file.replace('.wav','')}.{STEM_EXT}"
+            AudioSegment.from_wav(wav_file).export(stem_file, format=STEM_EXT)
+            if os.path.exists(stem_file):
+              os.remove(wav_file)
 
-        output_stems = os.listdir(audio_output_dir)
-        status_text = 'complete'
+      output_stems = os.listdir(audio_output_dir)
+      status_text = 'complete'
 
-        if DELETE_OUTPUT_DIR:
-          delete_output_dir(audio_output_dir)
-        delete_input_file(file_in)
+      if DELETE_OUTPUT_DIR:
+        delete_output_dir(audio_output_dir)
+      delete_input_file(file_in)
 
-        response = {
-          "status": status_text,
-          "dirname": file_name_no_ext,
-          "uuid": uuid,
-          "exception": ERROR_REASON
-        }
-        if not DELETE_OUTPUT_DIR:
-          response['stems'] = output_stems
+      response = {
+        "status": status_text,
+        "dirname": file_name_no_ext,
+        "uuid": uuid,
+        "exception": ERROR_REASON
+      }
+      if not DELETE_OUTPUT_DIR:
+        response['stems'] = output_stems
 
-        return JsonResponse(response)
-      except Exception as error:
-        handle_processing_exception(error, file_in, audio_output_dir)
+      return JsonResponse(response)
+    except Exception as error:
+      handle_processing_exception(error, file_in, audio_output_dir)
 
 
 # Provision the session.
