@@ -287,7 +287,7 @@ function Songhill() {
       }
     })
     .then((response) => {
-      if (callback && response?.headers?.status === 'cleaned') {
+      if (callback) {
         callback();
       }
     })
