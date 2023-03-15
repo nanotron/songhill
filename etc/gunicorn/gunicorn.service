@@ -8,15 +8,14 @@ User=www-data
 Group=www-data
 WorkingDirectory=/var/www/songhill/backend
 ExecStart=/var/www/songhill/backend/venv/bin/gunicorn \
-#	To see django output:
-	--capture-output \
-	--name gunicorn \
-# --log-level info \
-  --log-level debug \
+  #	To see django output:
+	#--capture-output \
+	#--name gunicorn \
+  --log-level info \
 	--access-logfile /var/log/gunicorn/socket.log \
 	--error-logfile /var/log/gunicorn/socket.log \
-#	--max-requests 16 \
-#	--max-requests-jitter 8 \
+  #--max-requests 16 \
+  #--max-requests-jitter 8 \
 	--workers 1 \
 	--threads 1 \
 	--timeout 600 \
