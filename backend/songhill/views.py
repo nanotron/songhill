@@ -241,7 +241,7 @@ def purge(request):
         elif os.path.exists(file) and os.path.isdir(file):
           shutil.rmtree(file)
 
-      return HttpResponse(headers={'status': 'cleaned'})
+      return JsonResponse({'status': 'cleaned'})
     except Exception as error:
       myLogger(f'Purge error: {error}')
-      return HttpResponse(headers={'status': 'error'})
+      return JsonResponse({'status': 'error'})
