@@ -289,9 +289,6 @@ function Songhill() {
     .then((response) => {
       if (callback && response?.headers?.status === 'cleaned') {
         callback();
-      } else {
-        window.onbeforeunload = () => {};
-        window.location.reload();
       }
     })
     .catch(function (error) {
