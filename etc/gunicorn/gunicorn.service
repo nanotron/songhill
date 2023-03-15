@@ -9,9 +9,10 @@ Group=www-data
 WorkingDirectory=/var/www/songhill/backend
 ExecStart=/var/www/songhill/backend/venv/bin/gunicorn \
 #	To see django output:
-  --capture-output \
-#	--name gunicorn \
-	--log-level info \
+	--capture-output \
+	--name gunicorn \
+# --log-level info \
+  --log-level debug \
 	--access-logfile /var/log/gunicorn/socket.log \
 	--error-logfile /var/log/gunicorn/socket.log \
 #	--max-requests 16 \
