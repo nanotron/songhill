@@ -15,6 +15,7 @@ from django.core.files.storage import default_storage
 from django.http import Http404, HttpResponse, JsonResponse
 from django.middleware import csrf
 from django.views.decorators.http import require_http_methods
+from django.views.decorators.csrf import csrf_exempt
 
 from pydub import AudioSegment
 from spleeter.separator import Separator
