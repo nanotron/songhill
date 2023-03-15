@@ -233,12 +233,12 @@ function Songhill() {
       pageInProgress()
       setSubmitBtnDisabled(false)
 
-      const formData  = new FormData()
-      formData.append('type', e.target[0].value)
-      formData.append('file', e.target[1].files[0])
-      formData.append('uuid', uuid)
-      formData.append('Accept', STEM_TYPE)
-      formData.append('csrfmiddlewaretoken', csrftoken)
+      const formData  = new FormData();
+      formData.append('type', e.target[0].value);
+      formData.append('file', e.target[1].files[0]);
+      formData.append('uuid', uuid);
+      formData.append('Accept', STEM_TYPE);
+      formData.append('csrfmiddlewaretoken', csrftoken);
 
       // Upload file.
       axios.post(`${API_PATH}/process/`, formData, {
@@ -277,9 +277,11 @@ function Songhill() {
 
   // Purge all output files.
   const purgeFiles = (callback) => {
-    const formData = new FormData()
-    formData.append('dirname', fileData.dirname)
-    formData.append('uuid', uuid)
+    const formData = new FormData();
+    formData.append('dirname', fileData.dirname);
+    formData.append('uuid', uuid);
+    formData.append('csrfmiddlewaretoken', csrftoken);
+
     axios.post(`${API_PATH}/purge/`, formData, {
       headers: {
         'content-type': 'multipart/form-data',
