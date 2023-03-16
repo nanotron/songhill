@@ -16,8 +16,8 @@
 }
 
 .actions-wrapper {
-  border-left: 2px solid var(--border-color);
-  border-right: 2px solid var(--border-color);
+  border-left: 3px solid var(--border-color);
+  border-right: 3px solid var(--border-color);
   text-align: center;
   /* filter: blur(1px); */
   background-color: #000;
@@ -37,7 +37,7 @@
   text-align: left;
   color: #bbb;
   background: #161616;
-  border-right: 2px solid var(--border-color);
+  border-right: 3px solid var(--border-color);
   margin: 0;
   min-width: 22em;
   width: 22em;
