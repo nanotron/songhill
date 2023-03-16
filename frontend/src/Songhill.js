@@ -242,6 +242,7 @@ function Songhill() {
 
       // Upload file.
       axios.post(`${API_PATH}/process/`, formData, {
+        withCredentials: true,
         headers: {
           'content-type': 'multipart/form-data',
           'X-CSRFToken': csrftoken
@@ -283,6 +284,7 @@ function Songhill() {
     formData.append('uuid', uuid);
 
     axios.post(`${API_PATH}/purge/`, formData, {
+      withCredentials: true,
       headers: {
         'content-type': 'multipart/form-data',
         'X-CSRFToken': csrftoken

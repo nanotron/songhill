@@ -127,7 +127,7 @@ def handle_processing_exception(error, file_in, audio_output_dir):
   gc.collect()
   return JsonResponse({'error': str(error)})
 
-@csrf_exempt
+#@csrf_exempt
 @require_http_methods(['POST'])
 def process(request):
   if request.method == 'POST':
@@ -229,7 +229,7 @@ def zip(request):
   return return_file(zip_filename, "application/zip")
 
 # Remove any session files.
-@csrf_exempt
+#@csrf_exempt
 @require_http_methods(['POST'])
 def purge(request):
   if request.method == 'POST':
