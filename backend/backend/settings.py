@@ -157,8 +157,8 @@ CSRF_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = [
   'https://songhill.com',
   'https://www.songhill.com',
-  'https://spleeter.org',
-  'https://www.spleeter.org',
+  # 'https://spleeter.org',
+  # 'https://www.spleeter.org',
   'https://songhill.home',
   'https://www.songhill.home',
   'https://nanotron.net'
@@ -195,8 +195,8 @@ CORS_ALLOWED_ORIGINS = [
   'https://www.songhill.com',
   'https://songhill.home',
   'https://songhill.nanotron.net',
-  'https://spleeter.org',
-  'https://www.spleeter.org'
+  # 'https://spleeter.org',
+  # 'https://www.spleeter.org'
 ]
 # CORS_ALLOWED_ORIGIN_REGEXES = [
 #   r"^http://\w+\.spleeter\.org$",
