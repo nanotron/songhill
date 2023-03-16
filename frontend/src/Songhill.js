@@ -239,11 +239,9 @@ function Songhill() {
       formData.append('file', e.target[1].files[0]);
       formData.append('uuid', uuid);
       formData.append('Accept', STEM_TYPE);
-      formData.append('X-CSRFToken', csrftoken);
 
       // Upload file.
       axios.post(`${API_PATH}/process/`, formData, {
-        withCredentials: true,
         headers: {
           'content-type': 'multipart/form-data',
           'X-CSRFToken': csrftoken
@@ -283,10 +281,8 @@ function Songhill() {
     const formData = new FormData();
     formData.append('dirname', fileData.dirname);
     formData.append('uuid', uuid);
-    formData.append('X-CSRFToken', csrftoken);
 
     axios.post(`${API_PATH}/purge/`, formData, {
-      withCredentials: true,
       headers: {
         'content-type': 'multipart/form-data',
         'X-CSRFToken': csrftoken
