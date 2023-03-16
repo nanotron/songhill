@@ -435,6 +435,9 @@ input[type=submit].btn-disabled {
   .stem {
     font-size: 1.1em;
   }
+  footer {
+    border-top: 5px solid var(--border-color);
+  }
   form select, form input[type='file'] {
     font-size: 0.5em;
   }
