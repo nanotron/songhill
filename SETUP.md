@@ -23,13 +23,13 @@ sudo hostnamectl set-hostname songhill
 
 # System Dependencies
 
-sudo apt install git vim ufw htop nginx tmux curl ripgrep rsync
+sudo apt install git vim ufw htop nginx tmux curl ripgrep rsync npm
 
 # System Dependencies - Backend Only
 
 sudo apt install ffmpeg libavcodec-extra zip python3-pip python3-dev libpq-dev virtualenv psmisc
 
-# Node - Frontend
+# OLD: Node - Frontend - Only perform this if the `apt install` doesn't work.
 
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt install nodejs
