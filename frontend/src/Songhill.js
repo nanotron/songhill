@@ -355,7 +355,7 @@ function Songhill() {
             <a href="https://www.buymeacoffee.com/songhill" target="_blank" rel="noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-white.png" alt="Buy Me A Coffee" className="buy-me-a-coffee" /></a>
             </div>}
             <footer>
-              <div className="copyright">&copy; 2024 Ernest Millan</div>
+              <div className="copyright">&copy; 2024 <a href="mailto:songhill.com@gmail.com">Ernest Millan</a></div>
             </footer>
           </div>
         </div>
