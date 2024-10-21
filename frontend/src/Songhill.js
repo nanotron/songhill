@@ -348,7 +348,7 @@ function Songhill() {
               <p><strong>5:</strong> <span className="stem-info-box">vocals</span><span className="stem-info-box">drums</span><span className="stem-info-box">bass</span><span className="stem-info-box">piano</span><span className="stem-info-box">other</span></p>
             </div>
             <p>Upload your audio file to generate isolated audio files for preview or download.</p>
-            <p>We use the <a rel="noreferrer" target="_blank" href="https://github.com/deezer/spleeter">Spleeter</a> separation library which attempts to produce the best possible isolation of instrumental and vocal parts. Results will vary as its approach is based in machine learning.</p>
+            <p>We use the <a rel="noreferrer" target="_blank" href="https://github.com/deezer/spleeter">Spleeter</a> separation library which attempts to produce the best possible isolation of instrumental and vocal parts. Results will vary as it is based in machine learning.</p>
             <p>Songhill is a free service and is intended to promote and support the growth of musical learning, practice, and performance.</p>
             { /* <p>Inquiries and questions may be issued <a href={mailto}>here</a>.</p> */ }
             { SHOW_ADS && <div id="ad">
