@@ -116,7 +116,7 @@ vim .env
 virtualenv venv -p python3
 source venv/bin/activate
 
-pip install django zipp django-admin backend djangorestframework django-cors-headers pydub spleeter python-magic gunicorn python-decouple psutil
+pip install django zipp django-admin backend djangorestframework django-cors-headers pydub spleeter python-magic gunicorn python-decouple psutil python-decouple config django-cors-headers
   - or, to reinstall: pip install -I <above packages>
 
 optional: python manage.py migrate
